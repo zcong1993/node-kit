@@ -1,17 +1,15 @@
-# __package_name__
+# kit
 
-<!-- [![NPM version](https://img.shields.io/npm/v/@zcong/__package_name__.svg?style=flat)](https://npmjs.com/package/@zcong/__package_name__) -->
-<!-- [![NPM downloads](https://img.shields.io/npm/dm/@zcong/__package_name__.svg?style=flat)](https://npmjs.com/package/@zcong/__package_name__) -->
-<!-- [![codecov](https://codecov.io/gh/zcong1993/__package_name__/branch/master/graph/badge.svg)](https://codecov.io/gh/zcong1993/__package_name__) -->
+<!-- [![codecov](https://codecov.io/gh/zcong1993/kit/branch/master/graph/badge.svg)](https://codecov.io/gh/zcong1993/kit) -->
 
 > my cool project
 
 ## Install
 
 ```bash
-$ yarn add @zcong/__package_name__
+$ yarn add @zcong1993/kit
 # or npm
-$ npm i @zcong/__package_name__ --save
+$ npm i @zcong1993/kit --save
 ```
 
 ## License

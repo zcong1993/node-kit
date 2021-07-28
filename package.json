@@ -1,5 +1,5 @@
 {
-  "name": "@zcong/__package_name__",
+  "name": "@zcong1993/kit",
   "version": "0.0.0",
   "description": "my cool project",
   "main": "./dist/index.js",
@@ -45,5 +45,8 @@
       "yarn format",
       "git add ."
     ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
