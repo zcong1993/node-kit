@@ -23,8 +23,10 @@
   "author": "zcong1993",
   "license": "MIT",
   "devDependencies": {
+    "@nestjs/common": "^8.0.5",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.1",
+    "@types/promise.allsettled": "^1.0.3",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
     "eslint": "^7.27.0",
@@ -48,5 +50,8 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "promise.allsettled": "^1.0.4"
   }
 }
