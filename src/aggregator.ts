@@ -1,26 +1,14 @@
-import { LoggerService } from '@nestjs/common'
 import allsettled from 'promise.allsettled'
-
-export interface Handler<T> {
-  fn: () => Promise<T> | T
-  fallbackFn?: () => Promise<T> | T
-  withLog?: boolean
-}
-
-export type HandlerTuple<T extends [unknown, ...unknown[]]> = {
-  [P in keyof T]: Handler<T[P]>
-}
-export type ResultTuple<T extends [unknown, ...unknown[]]> = {
-  [P in keyof T]: T[P]
-}
 
 export const withDefaultValue = <T>(value: T) => {
   return (): T => value
 }
 
+export type AggregatorOnError = (error: Error, index: number) => void
+
 export const aggregator = async <T extends [unknown, ...unknown[]]>(
-  logger: LoggerService,
-  iterable: HandlerTuple<T>
+  iterable: HandlerTuple<T>,
+  onError?: AggregatorOnError
 ): Promise<ResultTuple<T>> => {
   // https://github.com/es-shims/Promise.allSettled/issues/5#issuecomment-747464536
   const resArr = await allsettled.call(
@@ -33,9 +21,8 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
       try {
         return await it.fn()
       } catch (err) {
-        if (it.withLog) {
-          const logContent = `index ${i} call origin fn error: ${err}, will call fallbackFn`
-          logger.warn(logContent)
+        if (onError) {
+          onError(err, i)
         }
         return it.fallbackFn()
       }
@@ -47,12 +34,20 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
     if (r.status === 'fulfilled') {
       res.push(r.value)
     } else {
-      if (iterable[i].withLog) {
-        const logContent = `index ${i} cause error, will throw: ${r.reason}`
-        logger.warn(logContent)
-      }
       throw new Error(r.reason as any)
     }
   }
   return res as any as Promise<ResultTuple<T>>
+}
+
+export interface Handler<T> {
+  fn: () => Promise<T> | T
+  fallbackFn?: () => Promise<T> | T
+}
+
+export type HandlerTuple<T extends [unknown, ...unknown[]]> = {
+  [P in keyof T]: Handler<T[P]>
+}
+export type ResultTuple<T extends [unknown, ...unknown[]]> = {
+  [P in keyof T]: T[P]
 }
