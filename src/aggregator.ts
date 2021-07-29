@@ -6,6 +6,13 @@ export const withDefaultValue = <T>(value: T) => {
 
 export type AggregatorOnError = (error: Error, index: number) => void
 
+/**
+ * aggregate many promise into array
+ * support fallback
+ * @param iterable
+ * @param onError
+ * @returns
+ */
 export const aggregator = async <T extends [unknown, ...unknown[]]>(
   iterable: HandlerTuple<T>,
   onError?: AggregatorOnError

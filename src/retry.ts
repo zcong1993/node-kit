@@ -9,6 +9,13 @@ const noopHandler = () => {}
 
 export type OnError = (err: Error, retryCtx: IRetryContext) => void
 
+/**
+ * run function with cockatiel retry wrapper
+ * @param fn
+ * @param retryPolicy
+ * @param onError
+ * @returns
+ */
 export const runWithRetry = <T = any>(
   fn: () => Promise<T>,
   retryPolicy: RetryPolicy = defaultPolicy,

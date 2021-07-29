@@ -15,6 +15,15 @@ export interface Option {
   onError?: SliceOnError
 }
 
+/**
+ * slice large array into smalls and call consumer function in serial
+ * support AbortSignal cancel
+ * @param dataSource
+ * @param fn
+ * @param partition
+ * @param option
+ * @returns
+ */
 export const sliceRun = async <T = any, U = any>(
   dataSource: T[],
   fn: SliceHandler<T, U>,
