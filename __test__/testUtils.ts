@@ -6,3 +6,8 @@ export const delayFn =
     await setTimeout(timeout)
     return res
   }
+
+export const intRange = (num: number, start = 0) =>
+  Array(num)
+    .fill(null)
+    .map((_, i) => i + start)
