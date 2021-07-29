@@ -1,3 +1,5 @@
 export * from './globalUtils'
 export * from './logger'
 export * from './aggregator'
+export * from './string'
+export * from './redisLock'
