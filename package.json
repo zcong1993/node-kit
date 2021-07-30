@@ -1,5 +1,5 @@
 {
-  "name": "@zcong1993/kit",
+  "name": "@zcong1993/node-kit",
   "version": "0.1.0",
   "description": "my cool project",
   "main": "./dist/index.js",

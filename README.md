@@ -7,9 +7,9 @@
 ## Install
 
 ```bash
-$ yarn add @zcong1993/kit
+$ yarn add @zcong1993/node-kit
 # or npm
-$ npm i @zcong1993/kit --save
+$ npm i @zcong1993/node-kit --save
 ```
 
 ## License
