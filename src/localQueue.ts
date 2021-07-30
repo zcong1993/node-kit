@@ -18,6 +18,7 @@ export interface Task<T> {
 export class LocalQueue<T> {
   private _processed: number = 0
   private started: boolean = false
+  private buffered: T[] = []
   private readonly subject = new Subject<Task<T>>()
 
   constructor(
@@ -28,14 +29,14 @@ export class LocalQueue<T> {
 
   push(data: T) {
     if (!this.started) {
-      throw new Error('call startProcess before push')
+      this.buffered.push(data)
+    } else {
+      this.subject.next({ data })
     }
-    this.subject.next({ data })
   }
 
   startProcess(fn: (data: T, task?: Task<T>) => Promise<any>) {
-    this.started = true
-    return new Promise<void>((resolve) => {
+    const p = new Promise<void>((resolve) => {
       this.subject
         .pipe(
           mergeMap(async (task) => {
@@ -54,6 +55,12 @@ export class LocalQueue<T> {
           },
         })
     })
+
+    this.started = true
+    this.buffered.map((data) => this.subject.next({ data }))
+    this.buffered = []
+
+    return p
   }
 
   complete() {
