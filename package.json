@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "cockatiel": "^2.0.2",
-    "promise.allsettled": "^1.0.4"
+    "promise.allsettled": "^1.0.4",
+    "rxjs": "^7.3.0"
   }
 }
