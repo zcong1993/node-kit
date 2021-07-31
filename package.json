@@ -53,6 +53,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
+    "@zcong/singleflight": "^0.3.0",
     "cockatiel": "^2.0.2",
     "promise.allsettled": "^1.0.4",
     "rxjs": "^7.3.0"

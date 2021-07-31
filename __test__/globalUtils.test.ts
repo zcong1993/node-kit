@@ -3,7 +3,10 @@ import {
   registerGlobal,
   unregisterGlobal,
   getGlobal,
+  getOrCreateSync,
+  getOrCreate,
 } from '../src/globalUtils'
+import { delayFn, repeatCall } from './testUtils'
 
 describe('globalUtils', () => {
   const test1 = createGlobalKey('test1')
@@ -26,5 +29,52 @@ describe('globalUtils', () => {
     unregisterGlobal(test2)
     expect(getGlobal(test1)).toBeUndefined()
     expect(getGlobal(test2)).toBeUndefined()
+  })
+
+  it('getOrCreateSync', () => {
+    unregisterGlobal(test1)
+    unregisterGlobal(test2)
+
+    const fn = jest.fn().mockImplementation(() => testInstance1)
+
+    expect(getOrCreateSync(test1, fn)).toBe(testInstance1)
+    expect(getOrCreateSync(test1, fn)).toBe(testInstance1)
+
+    expect(fn).toBeCalledTimes(1)
+  })
+
+  it('getOrCreateSync already registered', () => {
+    unregisterGlobal(test1)
+    registerGlobal(test1, testInstance1)
+
+    const fn = jest.fn().mockImplementation(() => testInstance1)
+
+    expect(getOrCreateSync(test1, fn)).toBe(testInstance1)
+    expect(fn).toBeCalledTimes(0)
+  })
+
+  it('getOrCreate', async () => {
+    unregisterGlobal(test1)
+
+    const fn = jest.fn().mockImplementation(delayFn(100, testInstance1))
+
+    await repeatCall(10, async () => {
+      expect(await getOrCreate(test1, fn)).toBe(testInstance1)
+    })
+
+    expect(fn).toBeCalledTimes(1)
+  })
+
+  it('getOrCreate', async () => {
+    unregisterGlobal(test1)
+    registerGlobal(test1, testInstance1)
+
+    const fn = jest.fn().mockImplementation(delayFn(100, testInstance1))
+
+    await repeatCall(10, async () => {
+      expect(await getOrCreate(test1, fn)).toBe(testInstance1)
+    })
+
+    expect(fn).toBeCalledTimes(0)
   })
 })

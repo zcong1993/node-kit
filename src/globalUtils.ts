@@ -1,4 +1,7 @@
+import { Singleflight } from '@zcong/singleflight'
+
 const _global: any = typeof globalThis === 'object' ? globalThis : global
+const sf = new Singleflight()
 
 /**
  * helper function for create symbol key
@@ -45,4 +48,44 @@ export const unregisterGlobal = (key: symbol) => {
   if (_global[key]) {
     delete _global[key]
   }
+}
+
+/**
+ * get or create global instance, lazy load
+ * @param key
+ * @param factory only support sync function
+ * @returns
+ */
+export const getOrCreateSync = <T>(key: symbol, factory: () => T) => {
+  const instance = getGlobal(key)
+  if (instance) {
+    return instance
+  }
+
+  const newInstance = factory()
+  registerGlobal(key, newInstance)
+
+  return newInstance
+}
+
+/**
+ * async version lazy load
+ * only call factory function once even in concurrent calls
+ * @param key
+ * @param factory async factory
+ * @returns
+ */
+export const getOrCreate = async <T>(
+  key: symbol,
+  factory: () => Promise<T>
+) => {
+  const instance = getGlobal(key)
+  if (instance) {
+    return instance
+  }
+
+  const newInstance = await sf.do(key, factory)
+  registerGlobal(key, newInstance)
+
+  return newInstance
 }

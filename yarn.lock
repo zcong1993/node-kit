@@ -789,6 +789,11 @@
     "@typescript-eslint/types" "4.28.5"
     eslint-visitor-keys "^2.0.0"
 
+"@zcong/singleflight@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@zcong/singleflight/-/singleflight-0.3.0.tgz#077d5373259012784d80fa881660c3b2404e1f92"
+  integrity sha512-Lfvkmiisa38VwXBMGxQ5ftKB6GLC9TE80YXeiWs9mGRo1eXjipOsNfHMjWudrSRHYZPYUABg5a0mDZ2UnNqCew==
+
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/abab/-/abab-2.0.5.tgz#c0b678fb32d60fc1219c784d6a826fe385aeb79a"
