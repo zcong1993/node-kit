@@ -1,4 +1,7 @@
 import { setTimeout } from 'timers/promises'
+import Redis, { Redis as TypeRedis } from 'ioredis'
+
+export const sleep = setTimeout
 
 export const delayFn =
   <T>(timeout: number, res: T) =>
@@ -18,4 +21,11 @@ export const repeatCall = async <T>(num: number, fn: () => Promise<T>) => {
       .fill(null)
       .map(() => fn())
   )
+}
+
+export const setupRedis = (
+  redisUrl: string = process.env.Redis
+): [TypeRedis, () => void] => {
+  const redis = new Redis(redisUrl)
+  return [redis, () => redis.disconnect()]
 }

@@ -15,7 +15,12 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
+    services:
+      redis:
+        image: redis:latest
+        ports:
+        - 6379:6379
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1

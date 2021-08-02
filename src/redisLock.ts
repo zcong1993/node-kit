@@ -76,6 +76,7 @@ export const runWithMutex = async <T>(
   if (!lock) {
     return null
   }
+
   try {
     return await fn()
   } finally {
