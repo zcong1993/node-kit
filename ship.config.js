@@ -9,4 +9,7 @@ const getNextVersion =
 
 module.exports = {
   getNextVersion,
+  publishCommand: ({ isYarn, tag, defaultCommand, dir }) => {
+    return `NPM_AUTH_TOKEN=$GITHUB_TOKEN yarn publish --registry https://npm.pkg.github.com --tag ${tag}`
+  },
 }
