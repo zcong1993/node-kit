@@ -9,4 +9,6 @@ const getNextVersion =
 
 module.exports = {
   getNextVersion,
+  publishCommand: ({ isYarn, tag, defaultCommand, dir }) =>
+    `npm publish --tag ${tag}`,
 }
