@@ -1,3 +1,9 @@
+# [0.3.0](https://github.com/zcong1993/node-kit/compare/v0.2.1...v0.3.0) (2021-08-05)
+
+### Features
+
+- add loadPackage ([f05bf70](https://github.com/zcong1993/node-kit/commit/f05bf709fb09e31ab01733e3a1dec9ebca8243d1))
+
 # [0.2.0](https://github.com/zcong1993/node-kit/compare/v0.1.1...v0.2.0) (2021-08-05)
 
 ### Features
