@@ -1,3 +1,9 @@
+import { iterate } from 'iterare'
+import type { ValidatorOptions, ValidationError } from 'class-validator'
+import type { ClassTransformOptions } from 'class-transformer'
+import { createGlobalKey, getOrCreateSync } from './globalUtils'
+import { loadPackage } from './loadPackage'
+
 export type PipeErrorFactory = (err: string) => any
 
 export const defaultErrorFactory: PipeErrorFactory = (err) => new Error(err)
@@ -58,4 +64,89 @@ export const parseEnumPipe = <T = any>(
   }
 
   return value
+}
+
+export type Class<T = unknown, Arguments extends any[] = any[]> = new (
+  ...arguments_: Arguments
+) => T
+export interface ValidationPipeOptions {
+  transform?: boolean
+  disableErrorMessages?: boolean
+  transformOptions?: ClassTransformOptions
+  validatorOptions?: ValidatorOptions
+  exceptionFactory?: (errors: ValidationError[]) => any
+}
+export const isNil = (obj: any): obj is null | undefined =>
+  obj === undefined || obj === null
+
+const toEmptyIfNil = <T = any, R = any>(value: T): R | {} => {
+  return isNil(value) ? {} : value
+}
+
+const stripProtoKeys = (value: Record<string, any>) => {
+  delete value.__proto__
+  const keys = Object.keys(value)
+  iterate(keys)
+    .filter((key) => typeof value[key] === 'object' && value[key])
+    .forEach((key) => stripProtoKeys(value[key]))
+}
+
+export const validationPipe = <T>(
+  Cls: Class<T>,
+  value: any,
+  option: ValidationPipeOptions = {}
+): T => {
+  const classValidator: any = getOrCreateSync(
+    createGlobalKey('classValidator'),
+    () => loadPackage('class-validator', 'validationPipe')
+  )
+  const classTransformer: any = getOrCreateSync(
+    createGlobalKey('classTransformer'),
+    () => loadPackage('class-transformer', 'validationPipe')
+  )
+
+  if (!option.exceptionFactory) {
+    option.exceptionFactory = (errors) =>
+      new Error(`${errors.map((e) => e.toString())}`)
+  }
+
+  const types = [String, Boolean, Number, Array, Object, Buffer]
+  const toValidate = !types.some((t) => (Cls as any) === t) && !isNil(Cls)
+
+  if (!Cls || !toValidate) {
+    return value
+  }
+
+  const originalValue = value
+  value = toEmptyIfNil(value)
+  const isNil1 = value !== originalValue
+
+  if (isNil1) {
+    return originalValue
+  }
+
+  stripProtoKeys(value)
+
+  const entity = classTransformer.plainToClass(
+    Cls,
+    value,
+    option.transformOptions
+  )
+
+  const errors = classValidator.validateSync(
+    entity as any,
+    option.validatorOptions
+  )
+  if (errors.length > 0) {
+    throw option.exceptionFactory(errors)
+  }
+
+  if (option.transform) {
+    return entity
+  }
+
+  return option.validatorOptions &&
+    Object.keys(option.validatorOptions).length > 0
+    ? classTransformer.classToPlain(entity, option.transformOptions)
+    : value
 }
