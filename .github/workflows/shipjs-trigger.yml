@@ -21,6 +21,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@zcong1993'
       - run: |
           if [ -f "yarn.lock" ]; then
             yarn install
