@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/zcong1993/node-kit/compare/v0.4.0...v0.5.0) (2021-08-06)
+
+### Features
+
+- add loadPackageOnce ([ec7fde6](https://github.com/zcong1993/node-kit/commit/ec7fde6640b8fd9253aaeb7c4c06b46952aa52af))
+- add serveMetrics ([ad05fca](https://github.com/zcong1993/node-kit/commit/ad05fca58d7639054c392934493402c21c46cd88))
+
 # [0.4.0](https://github.com/zcong1993/node-kit/compare/v0.3.0...v0.4.0) (2021-08-06)
 
 ### Features
