@@ -1,3 +1,9 @@
+# [0.4.0](https://github.com/zcong1993/node-kit/compare/v0.3.0...v0.4.0) (2021-08-06)
+
+### Features
+
+- add validation pipe ([#7](https://github.com/zcong1993/node-kit/issues/7)) ([39c5388](https://github.com/zcong1993/node-kit/commit/39c538808ebca75e67f070e07f20491f5955deda))
+
 # [0.3.0](https://github.com/zcong1993/node-kit/compare/v0.2.1...v0.3.0) (2021-08-05)
 
 ### Features
