@@ -1,8 +1,7 @@
 import { iterate } from 'iterare'
 import type { ValidatorOptions, ValidationError } from 'class-validator'
 import type { ClassTransformOptions } from 'class-transformer'
-import { createGlobalKey, getOrCreateSync } from './globalUtils'
-import { loadPackage } from './loadPackage'
+import { loadPackageOnce } from './loadPackage'
 
 export type PipeErrorFactory = (err: string) => any
 
@@ -96,13 +95,13 @@ export const validationPipe = <T>(
   value: any,
   option: ValidationPipeOptions = {}
 ): T => {
-  const classValidator: any = getOrCreateSync(
-    createGlobalKey('classValidator'),
-    () => loadPackage('class-validator', 'validationPipe')
+  const classValidator: any = loadPackageOnce(
+    'class-validator',
+    'validationPipe'
   )
-  const classTransformer: any = getOrCreateSync(
-    createGlobalKey('classTransformer'),
-    () => loadPackage('class-transformer', 'validationPipe')
+  const classTransformer: any = loadPackageOnce(
+    'class-transformer',
+    'validationPipe'
   )
 
   if (!option.exceptionFactory) {

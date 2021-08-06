@@ -1,3 +1,5 @@
+import { createGlobalKey, getOrCreateSync } from './globalUtils'
+
 export const loadPackage = <T = any>(
   packageName: string,
   context: string,
@@ -11,4 +13,14 @@ export const loadPackage = <T = any>(
     )
     process.exit(1)
   }
+}
+
+export const loadPackageOnce = <T = any>(
+  packageName: string,
+  context: string,
+  loaderFn?: Function
+): T => {
+  return getOrCreateSync(createGlobalKey(`${context} ${packageName}`), () =>
+    loadPackage(packageName, context, loaderFn)
+  )
 }

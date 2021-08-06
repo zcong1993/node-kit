@@ -56,8 +56,8 @@ export const unregisterGlobal = (key: symbol) => {
  * @param factory only support sync function
  * @returns
  */
-export const getOrCreateSync = <T>(key: symbol, factory: () => T) => {
-  const instance = getGlobal(key)
+export const getOrCreateSync = <T>(key: symbol, factory: () => T): T => {
+  const instance = getGlobal<T>(key)
   if (instance) {
     return instance
   }
@@ -78,8 +78,8 @@ export const getOrCreateSync = <T>(key: symbol, factory: () => T) => {
 export const getOrCreate = async <T>(
   key: symbol,
   factory: () => Promise<T>
-) => {
-  const instance = getGlobal(key)
+): Promise<T> => {
+  const instance = getGlobal<T>(key)
   if (instance) {
     return instance
   }
