@@ -2,6 +2,7 @@ import { iterate } from 'iterare'
 import type { ValidatorOptions, ValidationError } from 'class-validator'
 import type { ClassTransformOptions } from 'class-transformer'
 import { loadPackageOnce } from './loadPackage'
+import { isNumeric } from './string'
 
 export type PipeErrorFactory = (err: string) => any
 
@@ -11,11 +12,7 @@ export const parseIntPipe = (
   value: string,
   pipeErrorFactory: PipeErrorFactory = defaultErrorFactory
 ) => {
-  const isNumeric =
-    ['string', 'number'].includes(typeof value) &&
-    !isNaN(parseFloat(value)) &&
-    isFinite(value as any)
-  if (!isNumeric) {
+  if (!isNumeric(value)) {
     throw pipeErrorFactory('Validation failed (numeric string is expected)')
   }
   return parseInt(value, 10)
@@ -25,11 +22,7 @@ export const parseFloatPipe = (
   value: string,
   pipeErrorFactory: PipeErrorFactory = defaultErrorFactory
 ) => {
-  const isNumeric =
-    ['string', 'number'].includes(typeof value) &&
-    !isNaN(parseFloat(value)) &&
-    isFinite(value as any)
-  if (!isNumeric) {
+  if (!isNumeric(value)) {
     throw pipeErrorFactory('Validation failed (numeric string is expected)')
   }
   return parseFloat(value)
