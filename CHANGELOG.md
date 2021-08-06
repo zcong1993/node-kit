@@ -1,3 +1,9 @@
+## [0.5.1](https://github.com/zcong1993/node-kit/compare/v0.5.0...v0.5.1) (2021-08-06)
+
+### Bug Fixes
+
+- export prom ([79935cc](https://github.com/zcong1993/node-kit/commit/79935cc0b63e2256a6c802a21bc576a609aeb3d7))
+
 # [0.5.0](https://github.com/zcong1993/node-kit/compare/v0.4.0...v0.5.0) (2021-08-06)
 
 ### Features
