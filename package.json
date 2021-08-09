@@ -54,10 +54,7 @@
     "preset": "ts-jest"
   },
   "lint-staged": {
-    "*.{js,json,ts}": [
-      "yarn format",
-      "git add ."
-    ]
+    "*": "prettier --write"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
