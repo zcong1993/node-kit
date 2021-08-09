@@ -2,3 +2,4 @@
 .eslintrc.js linguist-vendored
 .husky/* linguist-vendored
 ship.config.js linguist-vendored
+scripts/* linguist-vendored
