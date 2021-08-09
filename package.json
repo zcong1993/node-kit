@@ -1,6 +1,6 @@
 {
   "name": "@zcong1993/node-kit",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "my cool project",
   "main": "./dist/index.js",
   "files": [
