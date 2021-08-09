@@ -1,3 +1,11 @@
+# [0.6.0](https://github.com/zcong1993/node-kit/compare/v0.5.1...v0.6.0) (2021-08-09)
+
+### Features
+
+- add isNumeric parseIntOrDefault and parseFloatOrDefault ([a54dcc3](https://github.com/zcong1993/node-kit/commit/a54dcc3e689427e2c0b2ccade16232e7e487b5e6))
+- add pagnation helpers ([51b83ed](https://github.com/zcong1993/node-kit/commit/51b83ed28dc3807867be7d3afd32e7ca74d7ce6c))
+- use @microsoft/api-extractor make export types more friendly ([#11](https://github.com/zcong1993/node-kit/issues/11)) ([d0e3c08](https://github.com/zcong1993/node-kit/commit/d0e3c0815f901b21e8847b8c78180ae188686297))
+
 ## [0.5.1](https://github.com/zcong1993/node-kit/compare/v0.5.0...v0.5.1) (2021-08-06)
 
 ### Bug Fixes
