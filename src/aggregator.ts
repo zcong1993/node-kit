@@ -1,9 +1,45 @@
 import allsettled from 'promise.allsettled'
 
-export const withDefaultValue = <T>(value: T) => {
-  return (): T => value
+/**
+ * Handler function for {@link Handler} fn and fallbackFn
+ *
+ * @public
+ */
+export type HandlerFunc<T> = () => Promise<T> | T
+
+/**
+ * Args type for {@link aggregator}
+ *
+ * @public
+ */
+export interface Handler<T> {
+  fn: HandlerFunc<T>
+  fallbackFn?: HandlerFunc<T>
 }
 
+/**
+ * Helper type for infer handlers
+ *
+ * @public
+ */
+export type HandlerTuple<T extends [unknown, ...unknown[]]> = {
+  [P in keyof T]: Handler<T[P]>
+}
+
+/**
+ * Helper type for aggregator result
+ *
+ * @public
+ */
+export type ResultTuple<T extends [unknown, ...unknown[]]> = {
+  [P in keyof T]: T[P]
+}
+
+/**
+ * AggregatorError extends Error with index, for {@link AggregatorOnError}
+ *
+ * @public
+ */
 export class AggregatorError extends Error {
   constructor(err: Error, readonly index: number) {
     super(err.message)
@@ -11,14 +47,31 @@ export class AggregatorError extends Error {
   }
 }
 
+/**
+ * AggregatorOnError type of error handler
+ *
+ * @public
+ */
 export type AggregatorOnError = (error: AggregatorError) => void
 
 /**
- * aggregate many promise into array
+ * Create a fallbackFn with a static default value
+ * @param value default value
+ * @returns fallbackFn {@link HandlerFunc}
+ *
+ * @public
+ */
+export const withDefaultValue = <T>(value: T): HandlerFunc<T> => {
+  return (): T => value
+}
+
+/**
+ * aggregate many promise in concurency
  * support fallback
- * @param iterable
- * @param onError
- * @returns
+ * @remarks
+ * call all handler.fn concurrency, if one handler throw error without fallbackFn or fallbackFn throw error
+ * aggregator will throw the error
+ * @public
  */
 export const aggregator = async <T extends [unknown, ...unknown[]]>(
   iterable: HandlerTuple<T>,
@@ -52,16 +105,4 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
     }
   }
   return res as any as Promise<ResultTuple<T>>
-}
-
-export interface Handler<T> {
-  fn: () => Promise<T> | T
-  fallbackFn?: () => Promise<T> | T
-}
-
-export type HandlerTuple<T extends [unknown, ...unknown[]]> = {
-  [P in keyof T]: Handler<T[P]>
-}
-export type ResultTuple<T extends [unknown, ...unknown[]]> = {
-  [P in keyof T]: T[P]
 }
