@@ -20,7 +20,7 @@ jobs:
       redis:
         image: redis:latest
         ports:
-        - 6379:6379
+          - 6379:6379
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.9.1
@@ -37,5 +37,5 @@ jobs:
       - name: run test
         run: yarn test:cov
       # - uses: codecov/codecov-action@v2
-        # with:
-        #   token: ${{ secrets.CODECOV_TOKEN }}
+      # with:
+      #   token: ${{ secrets.CODECOV_TOKEN }}
