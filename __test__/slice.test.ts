@@ -1,4 +1,4 @@
-import { OnStart, sliceRun } from '../src/slice'
+import { OnStart, SliceError, sliceRun } from '../src/slice'
 import { delayFn, intRange } from './testUtils'
 
 describe('slice', () => {
@@ -64,5 +64,6 @@ describe('slice', () => {
       { onError }
     )
     expect(onError).toBeCalledTimes(5)
+    expect(onError.mock.calls[0][0]).toBeInstanceOf(SliceError)
   })
 })

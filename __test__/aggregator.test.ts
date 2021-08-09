@@ -1,4 +1,8 @@
-import { aggregator, withDefaultValue } from '../src/aggregator'
+import {
+  aggregator,
+  AggregatorError,
+  withDefaultValue,
+} from '../src/aggregator'
 import { delayFn } from './testUtils'
 
 describe('aggregator', () => {
@@ -92,5 +96,6 @@ describe('aggregator', () => {
     expect(res1).toBe(1)
     expect(res2).toBe('x')
     expect(onError).toBeCalledTimes(2)
+    expect(onError.mock.calls[0][0]).toBeInstanceOf(AggregatorError)
   })
 })

@@ -1,4 +1,4 @@
-import { LocalQueue } from '../src/localQueue'
+import { LocalQueue, LocalQueueError } from '../src/localQueue'
 import { delayFn, intRange } from './testUtils'
 
 describe('LocalQueue', () => {
@@ -54,8 +54,7 @@ describe('LocalQueue', () => {
   })
 
   it('onError', (done) => {
-    let i = 0
-    const onError = () => i++
+    const onError = jest.fn()
     const q = new LocalQueue<number>('test1', 10, onError)
     q.startProcess(async (data) => {
       if (data < 5) {
@@ -63,7 +62,8 @@ describe('LocalQueue', () => {
       }
       await delayFn(10, null)()
     }).then(() => {
-      expect(i).toBe(5)
+      expect(onError).toBeCalledTimes(5)
+      expect(onError.mock.calls[0][0]).toBeInstanceOf(LocalQueueError)
       done()
     })
 

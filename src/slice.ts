@@ -1,9 +1,17 @@
 export type OnStart = (startIndex: number, endIndex: number) => void
-export type SliceOnError = (
-  error: Error,
-  startIndex: number,
-  endIndex: number
-) => void
+
+export class SliceError extends Error {
+  constructor(
+    err: Error,
+    readonly startIndex: number,
+    readonly endIndex: number
+  ) {
+    super(err.message)
+    this.name = this.constructor.name
+  }
+}
+
+export type SliceOnError = (error: SliceError) => void
 
 export type SliceHandler<T, U> = (
   d: T[],
@@ -57,7 +65,7 @@ export const sliceRun = async <T = any, U = any>(
       res.push(r)
     } catch (err) {
       if (option?.onError) {
-        option.onError(err, startIndex, endIndex)
+        option.onError(new SliceError(err, startIndex, endIndex))
       }
     }
     i += pd.length

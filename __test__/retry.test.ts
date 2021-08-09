@@ -1,5 +1,5 @@
 import { Policy } from 'cockatiel'
-import { runWithRetry } from '../src/retry'
+import { RetryError, runWithRetry } from '../src/retry'
 import { delayFn } from './testUtils'
 
 describe('retry', () => {
@@ -53,5 +53,6 @@ describe('retry', () => {
     await runWithRetry(fn, Policy.handleAll().retry().delay([10, 20, 30]), f)
 
     expect(f).toBeCalledTimes(2)
+    expect(f.mock.calls[0][0]).toBeInstanceOf(RetryError)
   })
 })

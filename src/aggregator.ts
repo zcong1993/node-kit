@@ -4,7 +4,14 @@ export const withDefaultValue = <T>(value: T) => {
   return (): T => value
 }
 
-export type AggregatorOnError = (error: Error, index: number) => void
+export class AggregatorError extends Error {
+  constructor(err: Error, readonly index: number) {
+    super(err.message)
+    this.name = this.constructor.name
+  }
+}
+
+export type AggregatorOnError = (error: AggregatorError) => void
 
 /**
  * aggregate many promise into array
@@ -29,7 +36,7 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
         return await it.fn()
       } catch (err) {
         if (onError) {
-          onError(err, i)
+          onError(new AggregatorError(err, i))
         }
         return it.fallbackFn()
       }

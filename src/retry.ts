@@ -7,7 +7,14 @@ const defaultPolicy = Policy.handleAll()
 
 const noopHandler = () => {}
 
-export type OnError = (err: Error, retryCtx: IRetryContext) => void
+export class RetryError extends Error {
+  constructor(err: Error, readonly retryCtx: IRetryContext) {
+    super(err.message)
+    this.name = this.constructor.name
+  }
+}
+
+export type OnError = (err: RetryError) => void
 
 /**
  * run function with cockatiel retry wrapper
@@ -25,7 +32,7 @@ export const runWithRetry = <T = any>(
     try {
       return await fn()
     } catch (err) {
-      onError(err, retryCtx)
+      onError(new RetryError(err, retryCtx))
       throw err
     }
   })

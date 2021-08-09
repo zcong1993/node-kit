@@ -1,11 +1,14 @@
 import { Subject } from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
 
-export type LocalQueueOnError<T> = (
-  err: Error,
-  task: T,
-  queueName: string
-) => void
+export type LocalQueueOnError<T> = (err: LocalQueueError<T>) => void
+
+export class LocalQueueError<T> extends Error {
+  constructor(err: Error, readonly task: T, readonly queueName: string) {
+    super(err.message)
+    this.name = this.constructor.name
+  }
+}
 
 // task with meta, placeholder
 export interface Task<T> {
@@ -43,7 +46,7 @@ export class LocalQueue<T> {
             try {
               await fn(task.data, task)
             } catch (err) {
-              this.onError(err, task, this.queueName)
+              this.onError(new LocalQueueError(err, task, this.queueName))
             } finally {
               this._processed++
             }
