@@ -29,7 +29,7 @@
     "@microsoft/api-extractor": "^7.18.4",
     "@nestjs/common": "^8.0.5",
     "@types/ioredis": "^4.26.6",
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.0",
     "@types/node": "^16.4.6",
     "@types/promise.allsettled": "^1.0.3",
     "@types/supertest": "^2.0.11",
