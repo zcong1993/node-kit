@@ -175,6 +175,9 @@ async function main() {
   await runIfNotDry('git', ['push', 'origin', `refs/tags/${tag}`])
   await runIfNotDry('git', ['push'])
 
+  console.log('\nCreate Github release...')
+  await ghRelease(tag)
+
   if (isDryRun) {
     console.log(`\nDry run finished - run git diff to see package changes.`)
   }
@@ -220,6 +223,10 @@ async function publishPackage(version, runIfNotDry) {
       throw e
     }
   }
+}
+
+async function ghRelease(tag) {
+  await runIfNotDry('gh', ['release', 'create', tag, '--notes', ''])
 }
 
 main()

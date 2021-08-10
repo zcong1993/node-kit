@@ -23,6 +23,16 @@ jobs:
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+      - name: Setup github cli
+        uses: zcong1993/setup-bin@v0.3.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: gh
+          repo-full: cli/cli
+          tag-version: latest
+          matcher: _linux_amd64.tar.gz$
+          test-cmd: gh --version
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
