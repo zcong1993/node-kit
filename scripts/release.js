@@ -9,23 +9,6 @@ const semver = require('semver')
 const chalk = require('chalk')
 const prompts = require('prompts')
 
-const pkgDir = process.cwd()
-const pkgPath = path.resolve(pkgDir, 'package.json')
-/**
- * @type {{ name: string, version: string }}
- */
-const pkg = require(pkgPath)
-const pkgName = pkg.name.replace(/^@.+\//, '')
-const currentVersion = pkg.version
-/**
- * @type {boolean}
- */
-const isDryRun = args.dry
-/**
- * @type {boolean}
- */
-const skipBuild = args.skipBuild
-
 /**
  * @type {import('semver').ReleaseType[]}
  */
@@ -43,6 +26,41 @@ const versionIncrements = [
  * @param {import('semver').ReleaseType} i
  */
 const inc = (i) => semver.inc(currentVersion, i, 'beta')
+
+const ENV_NEXT = process.env['NEXT']
+let ENV_TARGET_VERSION = process.env['TARGET_VERSION']
+let ENV_INCREMENT = process.env['INCREMENT']
+
+if (!!ENV_NEXT) {
+  if (versionIncrements.includes(ENV_NEXT)) {
+    ENV_INCREMENT = ENV_NEXT
+  } else {
+    ENV_TARGET_VERSION = ENV_NEXT
+  }
+}
+
+const isEnvSet = (name) => !!process.env[name]
+
+const pkgDir = process.cwd()
+const pkgPath = path.resolve(pkgDir, 'package.json')
+/**
+ * @type {{ name: string, version: string }}
+ */
+const pkg = require(pkgPath)
+
+const isMono =
+  pkg.private && Array.isArray(pkg.workspaces) && pkg.workspaces.length > 0
+
+const pkgName = pkg.name.replace(/^@.+\//, '')
+const currentVersion = pkg.version
+/**
+ * @type {boolean}
+ */
+const isDryRun = args.dry || isEnvSet('DRY')
+/**
+ * @type {boolean}
+ */
+const skipBuild = args.skipBuild || isEnvSet('SKIP_BUILD')
 
 /**
  * @param {string} bin
@@ -68,7 +86,14 @@ const runIfNotDry = isDryRun ? dryRun : run
 const step = (msg) => console.log(chalk.cyan(msg))
 
 async function main() {
-  let targetVersion = args._[0]
+  let targetVersion = ENV_TARGET_VERSION || args._[0]
+
+  if (ENV_INCREMENT) {
+    if (!versionIncrements.includes(ENV_INCREMENT)) {
+      throw new Error(`invalid increment: ${targetVersion}`)
+    }
+    targetVersion = inc(ENV_INCREMENT)
+  }
 
   if (!targetVersion) {
     // no explicit version, offer suggestions
@@ -105,8 +130,7 @@ async function main() {
     throw new Error(`invalid target version: ${targetVersion}`)
   }
 
-  const tag =
-    pkgName === 'vite' ? `v${targetVersion}` : `${pkgName}@${targetVersion}`
+  const tag = isMono ? `${pkgName}@${targetVersion}` : `v${targetVersion}`
 
   if (targetVersion.includes('beta') && !args.tag) {
     /**
@@ -174,6 +198,7 @@ function updateVersion(version) {
 async function publishPackage(version, runIfNotDry) {
   const publicArgs = [
     'publish',
+    // '--not-interactive',
     '--no-git-tag-version',
     '--new-version',
     version,
@@ -197,4 +222,4 @@ async function publishPackage(version, runIfNotDry) {
   }
 }
 
-main().catch(console.error)
+main()

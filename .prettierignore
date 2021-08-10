@@ -1,6 +1,4 @@
 dist
 coverage
 yarn.lock
-.prettierignore
-.gitattributes
-*ignore
+.*

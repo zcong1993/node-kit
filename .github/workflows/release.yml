@@ -1,0 +1,39 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: version or increment to release
+        required: true
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-18.04
+    timeout-minutes: 10
+    permissions:
+      packages: write
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Config git
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT: ${{ github.event.inputs.version }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn release

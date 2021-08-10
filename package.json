@@ -7,7 +7,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run tsc-build && npm run api-types",
+    "build": "run-s tsc-build api-types",
     "test": "run-s lint jest",
     "test:cov": "run-s lint jest:cov",
     "tsc-build": "tsc --build tsconfig.build.json",
@@ -18,7 +18,9 @@
     "prepublishOnly": "npm run build",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
-    "api-types": "api-extractor run"
+    "api-types": "api-extractor run",
+    "release": "node ./scripts/release.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path ."
   },
   "types": "./dist/index.d.ts",
   "author": "zcong1993",
@@ -36,6 +38,7 @@
     "chalk": "^4.1.2",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "conventional-changelog-cli": "^2.1.1",
     "eslint": "^7.31.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
