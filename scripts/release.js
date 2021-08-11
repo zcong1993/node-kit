@@ -133,16 +133,17 @@ async function main() {
   const tag = isMono ? `${pkgName}@${targetVersion}` : `v${targetVersion}`
 
   if (targetVersion.includes('beta') && !args.tag) {
-    /**
-     * @type {{ tagBeta: boolean }}
-     */
-    const { tagBeta } = await prompts({
-      type: 'confirm',
-      name: 'tagBeta',
-      message: `Publish under dist-tag "beta"?`,
-    })
+    // /**
+    //  * @type {{ tagBeta: boolean }}
+    //  */
+    // const { tagBeta } = await prompts({
+    //   type: 'confirm',
+    //   name: 'tagBeta',
+    //   message: `Publish under dist-tag "beta"?`,
+    // })
 
-    if (tagBeta) args.tag = 'beta'
+    // if (tagBeta) args.tag = 'beta'
+    args.tag = 'beta'
   }
 
   step('\nUpdating package version...')
@@ -176,7 +177,7 @@ async function main() {
   await runIfNotDry('git', ['push'])
 
   console.log('\nCreate Github release...')
-  await ghRelease(tag)
+  await ghRelease(tag, !!args.tag)
 
   if (isDryRun) {
     console.log(`\nDry run finished - run git diff to see package changes.`)
@@ -225,8 +226,13 @@ async function publishPackage(version, runIfNotDry) {
   }
 }
 
-async function ghRelease(tag) {
-  await runIfNotDry('gh', ['release', 'create', tag, '--notes', ''])
+async function ghRelease(tag, prerelease) {
+  const args = ['release', 'create', tag, '--notes', '']
+  if (prerelease) {
+    args.push('--prerelease')
+  }
+
+  await runIfNotDry('gh', args)
 }
 
 main()
