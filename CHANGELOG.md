@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/zcong1993/node-kit/compare/v0.6.2...v0.7.0) (2021-08-11)
+
+### Features
+
+- **crypto:** add md5 and AesCipher ([efdd95e](https://github.com/zcong1993/node-kit/commit/efdd95ea63359e71153dfba1e878d53b95c66113))
+- **rand:** add randRange ([f5a1acf](https://github.com/zcong1993/node-kit/commit/f5a1acf796030cf4b9bfb3afd1751f782a01a4b1))
+
 ## [0.6.2](https://github.com/zcong1993/node-kit/compare/v0.6.1...v0.6.2) (2021-08-10)
 
 # [0.6.0](https://github.com/zcong1993/node-kit/compare/v0.5.1...v0.6.0) (2021-08-09)
