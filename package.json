@@ -59,7 +59,10 @@
     "typescript": "^4.3.5"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ]
   },
   "lint-staged": {
     "*": "prettier --write"
