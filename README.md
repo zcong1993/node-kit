@@ -1,4 +1,4 @@
-# kit
+# kit [![JS Test](https://github.com/zcong1993/node-kit/actions/workflows/js-test.yml/badge.svg)](https://github.com/zcong1993/node-kit/actions/workflows/js-test.yml)
 
 <!-- [![codecov](https://codecov.io/gh/zcong1993/kit/branch/master/graph/badge.svg)](https://codecov.io/gh/zcong1993/kit) -->
 
