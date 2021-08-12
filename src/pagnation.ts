@@ -16,9 +16,9 @@ export interface PagnationOffset {
 }
 
 /**
- * convert { current, pageSize } into { offset, limit }
- * @param qs
- * @param defaultPageSize 100
+ * convert \{ current, pageSize \} into \{ offset, limit \}
+ * @param qs - query object
+ * @param defaultPageSize - default is 100
  * @returns
  */
 export const parsePagnation = <T extends PagnationPage>(
@@ -35,9 +35,9 @@ export const parsePagnation = <T extends PagnationPage>(
 }
 
 /**
- * normalize { offset, limit }
- * @param qs
- * @param defaultLimit
+ * normalize \{ offset, limit \}
+ * @param qs - query object
+ * @param defaultLimit - default is 100
  * @returns
  */
 export const parsePagnationOffsetLimit = <T extends PagnationOffset>(

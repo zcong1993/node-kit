@@ -9,7 +9,7 @@ export type StringBuf = string | Buffer
 
 /**
  * get md5 string of a string of buffer
- * @param str string of buffer to md5
+ * @param str - string of buffer to md5
  * @returns hex string
  */
 export const md5 = (str: StringBuf) =>
@@ -20,8 +20,8 @@ export const md5 = (str: StringBuf) =>
  */
 export class AesCipher {
   /**
-   * @param algorithm will passing to createCipheriv, eg: aes-256-cbc
-   * @param ivLength
+   * @param algorithm - will passing to createCipheriv, eg: aes-256-cbc
+   * @param ivLength - iv length
    */
   constructor(
     readonly algorithm: string,
@@ -30,8 +30,8 @@ export class AesCipher {
 
   /**
    * encrypt a text string or buffer
-   * @param input text string of buffer to encrypt
-   * @param encryptionKey encryption secret key
+   * @param input - text string of buffer to encrypt
+   * @param encryptionKey - encryption secret key
    * @returns [randomIv]:[encryptedString]
    */
   encrypt(input: StringBuf, encryptionKey: string): string {
@@ -48,8 +48,8 @@ export class AesCipher {
 
   /**
    * decrypt
-   * @param encrypted encrypted text
-   * @param encryptionKey encryption secret key
+   * @param encrypted - encrypted text
+   * @param encryptionKey - encryption secret key
    * @returns Buffer
    */
   decrypt(encrypted: string, encryptionKey: string) {

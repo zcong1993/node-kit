@@ -26,10 +26,10 @@ export interface Option {
 /**
  * slice large array into smalls and call consumer function in serial
  * support AbortSignal cancel
- * @param dataSource
- * @param fn
- * @param partition
- * @param option
+ * @param dataSource - data source array
+ * @param fn - handler function
+ * @param partition - partition number
+ * @param option - {@link Option} option
  * @returns
  */
 export const sliceRun = async <T = any, U = any>(

@@ -1,5 +1,12 @@
 import { createGlobalKey, getOrCreateSync } from './globalUtils'
 
+/**
+ * dynamic load a npm package, use as lazy load a optional package
+ * @param packageName - npm package name
+ * @param context - context message for error log
+ * @param loaderFn - custom load function
+ * @returns loaded package module
+ */
 export const loadPackage = <T = any>(
   packageName: string,
   context: string,
@@ -15,6 +22,13 @@ export const loadPackage = <T = any>(
   }
 }
 
+/**
+ * get or load a npm package once
+ * @param packageName - npm package name
+ * @param context - context message for error log
+ * @param loaderFn - custom load function
+ * @returns loaded package module
+ */
 export const loadPackageOnce = <T = any>(
   packageName: string,
   context: string,

@@ -5,16 +5,14 @@ const sf = new Singleflight()
 
 /**
  * helper function for create symbol key
- * @param key
- * @returns
  */
 export const createGlobalKey = (key: string) => Symbol.for(key)
 
 /**
  * register an instance to global
- * @param key
- * @param instance
- * @param allowOverride
+ * @param key - unique key
+ * @param instance - instance object
+ * @param allowOverride - if allow register same key multi times
  * @returns
  */
 export const registerGlobal = <T>(
@@ -33,8 +31,8 @@ export const registerGlobal = <T>(
 
 /**
  * get global instance by key
- * @param key
- * @returns
+ * @param key - unique key
+ * @returns instance
  */
 export const getGlobal = <T>(key: symbol): T | undefined => {
   return _global[key]
@@ -42,7 +40,7 @@ export const getGlobal = <T>(key: symbol): T | undefined => {
 
 /**
  * unregister a global instance
- * @param key
+ * @param key - unique key
  */
 export const unregisterGlobal = (key: symbol) => {
   if (_global[key]) {
@@ -52,8 +50,8 @@ export const unregisterGlobal = (key: symbol) => {
 
 /**
  * get or create global instance, lazy load
- * @param key
- * @param factory only support sync function
+ * @param key - unique key
+ * @param factory - only support sync function
  * @returns
  */
 export const getOrCreateSync = <T>(key: symbol, factory: () => T): T => {
@@ -71,8 +69,8 @@ export const getOrCreateSync = <T>(key: symbol, factory: () => T): T => {
 /**
  * async version lazy load
  * only call factory function once even in concurrent calls
- * @param key
- * @param factory async factory
+ * @param key - unique key
+ * @param factory - async factory
  * @returns
  */
 export const getOrCreate = async <T>(

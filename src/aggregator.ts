@@ -56,7 +56,7 @@ export type AggregatorOnError = (error: AggregatorError) => void
 
 /**
  * Create a fallbackFn with a static default value
- * @param value default value
+ * @param value - default value
  * @returns fallbackFn {@link HandlerFunc}
  *
  * @public

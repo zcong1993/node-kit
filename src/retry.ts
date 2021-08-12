@@ -18,9 +18,9 @@ export type OnError = (err: RetryError) => void
 
 /**
  * run function with cockatiel retry wrapper
- * @param fn
- * @param retryPolicy
- * @param onError
+ * @param fn - run function
+ * @param retryPolicy - cockatiel retry policy
+ * @param onError - error listener
  * @returns
  */
 export const runWithRetry = <T = any>(

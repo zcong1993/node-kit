@@ -30,10 +30,10 @@ export type UnLockFn = () => Promise<void>
 /**
  * use redis create mutex lock, this function is more safety
  * cause it only unlock itself
- * @param redis
- * @param key
- * @param px
- * @returns [getLock: boolean, unlockFn: () => Promise<void>]
+ * @param redis - ioredis instance
+ * @param key - lock redis key
+ * @param px - lock px in ms
+ * @returns [getLock: boolean, unlockFn: () =\> Promise<void>]
  */
 export const tryLock = async (
   redis: Redis,
@@ -59,12 +59,12 @@ export const tryLock = async (
 }
 
 /**
- * run a function with mutext barrier
- * @param redis
- * @param key
- * @param fn
- * @param px
- * @returns
+ * run a function with mutex barrier
+ * @param redis - ioredis instance
+ * @param key - redis lock key
+ * @param fn - run function
+ * @param px - lock px in ms
+ * @returns ReturnType<fn> | null
  */
 export const runWithMutex = async <T>(
   redis: Redis,

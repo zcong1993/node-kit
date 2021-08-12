@@ -2,7 +2,7 @@ import crypto from 'crypto'
 
 /**
  * create len(n) random string
- * @param n
+ * @param n - want string length
  * @returns
  */
 export const randString = (n: number): string => {
@@ -14,7 +14,7 @@ export const randString = (n: number): string => {
 
 /**
  * check if a value is number or number string
- * @param value
+ * @param value - value to be checked
  * @returns
  */
 export const isNumeric = (value: any) =>
@@ -24,8 +24,8 @@ export const isNumeric = (value: any) =>
 
 /**
  * parse int if value is Numeric or return default
- * @param value
- * @param defaultVal
+ * @param value - value to be checked
+ * @param defaultVal - default value when invalid value
  * @returns
  */
 export const parseIntOrDefault = (
@@ -42,8 +42,8 @@ export const parseIntOrDefault = (
 
 /**
  * parse float if value is Numeric or return default
- * @param value
- * @param defaultVal
+ * @param value - value to be checked
+ * @param defaultVal - default value when invalid value
  * @returns
  */
 export const parseFloatOrDefault = (

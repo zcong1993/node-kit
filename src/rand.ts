@@ -1,7 +1,7 @@
 /**
  * random float in range [min, max)
- * @param min
- * @param max
+ * @param min - min number
+ * @param max - max number
  * @returns
  */
 export const randRangeFloat = (min: number, max: number) => {
@@ -10,8 +10,8 @@ export const randRangeFloat = (min: number, max: number) => {
 
 /**
  * random int in range [min, max)
- * @param min
- * @param max
+ * @param min - min number
+ * @param max - max number
  * @returns
  */
 export const randRangeInt = (min: number, max: number) => {
