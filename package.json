@@ -76,5 +76,11 @@
     "iterare": "^1.2.1",
     "promise.allsettled": "^1.0.4",
     "rxjs": "^7.3.0"
+  },
+  "bugs": "https://github.com/zcong1993/node-kit/issues",
+  "homepage": "https://github.com/zcong1993/node-kit",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zcong1993/node-kit.git"
   }
 }
