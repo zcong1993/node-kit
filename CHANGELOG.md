@@ -1,3 +1,17 @@
+# [0.8.0](https://github.com/zcong1993/node-kit/compare/v0.7.0...v0.8.0) (2021-08-16)
+
+### Bug Fixes
+
+- export Picker interface ([f940a78](https://github.com/zcong1993/node-kit/commit/f940a789c67e1a038dd959149617e74397fdbc20))
+- release commonjs ([ecd5226](https://github.com/zcong1993/node-kit/commit/ecd52262349f7eaa73dfec92ae304f3db99c154c))
+
+### Features
+
+- **array:** add array unique ([e3453f0](https://github.com/zcong1993/node-kit/commit/e3453f0c210d921c6babb10510cc5eb7a552d4c7))
+- **cache:** add cache decorator ([60de3dd](https://github.com/zcong1993/node-kit/commit/60de3dd2d5dcdef43d3ea3d675aebb00daa347b4))
+- **picker:** add pickers ([ed9c52a](https://github.com/zcong1993/node-kit/commit/ed9c52af8c3d452266a7aaaaedeeb38177c8a6a8))
+- **utils:** add msUntilNextDay and ms2s ([f67ffd6](https://github.com/zcong1993/node-kit/commit/f67ffd6d3f59bd801dd8fca9bea4b4e6fca85690))
+
 # [0.7.0](https://github.com/zcong1993/node-kit/compare/v0.6.2...v0.7.0) (2021-08-11)
 
 ### Features
