@@ -53,7 +53,7 @@ describe('cache', () => {
     class Test {
       @cache(cacher, {
         keyPrefix: 'cacheTest2',
-        expire: 10,
+        expire: () => 10,
       })
       async cacheTest(name: string, age: number) {
         await sleep(100)
