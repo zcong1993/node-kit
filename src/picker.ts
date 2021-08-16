@@ -32,7 +32,7 @@ export abstract class SimplePicker<T> implements Picker<T> {
  * RandomPicker always pick a random node
  */
 export class RandomPicker<T> extends SimplePicker<T> {
-  pick(key: string): T {
+  pick(_: string): T {
     const rand = Math.floor(Math.random() * this.len)
     return this.nodeList[rand]
   }
@@ -49,7 +49,7 @@ export class RoundRobinPicker<T> extends SimplePicker<T> {
     this._priIndex = 0
   }
 
-  pick(key: string): T {
+  pick(_: string): T {
     if (this._priIndex === this.len) {
       this._priIndex = 0
     }
