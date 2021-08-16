@@ -4,7 +4,7 @@ import { loadPackageOnce } from './loadPackage'
 /**
  * Picker interface, a picker can pick a node by key
  */
-interface Picker<T> {
+export interface Picker<T> {
   pick(key: string): T
 }
 
