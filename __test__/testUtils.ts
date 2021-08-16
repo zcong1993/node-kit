@@ -23,6 +23,12 @@ export const repeatCall = async <T>(num: number, fn: () => Promise<T>) => {
   )
 }
 
+export const repeatCallSync = <T>(num: number, fn: () => T) => {
+  return Array(num)
+    .fill(null)
+    .map(() => fn())
+}
+
 export const setupRedis = (
   redisUrl: string = process.env.Redis
 ): [TypeRedis, () => void] => {

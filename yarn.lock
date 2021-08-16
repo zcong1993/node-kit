@@ -717,6 +717,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/hashring@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.npmjs.org/@types/hashring/-/hashring-3.2.1.tgz#1f5176a1d5729d631bd4d944a0be9480cd6775f4"
+  integrity sha512-69vRQ10rZ0rj+KHMel6vSJpy9p7O5FsiczuS7RrzqaXpL4RYYPaW4MeseOISAJ0KQo+WUknXIYLwmFHhTTJrew==
+  dependencies:
+    "@types/node" "*"
+
 "@types/ioredis@^4.26.6":
   version "4.26.6"
   resolved "https://registry.npmjs.org/@types/ioredis/-/ioredis-4.26.6.tgz#7e332d6d24f12d79a1099834ccfa0c169ef667ed"
@@ -1238,6 +1245,11 @@ bser@2.1.1:
   integrity sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==
   dependencies:
     node-int64 "^0.4.0"
+
+buffer-crc32@^0.2.13:
+  version "0.2.13"
+  resolved "https://registry.npmjs.org/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
+  integrity sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=
 
 buffer-from@1.x, buffer-from@^1.0.0:
   version "1.1.1"
