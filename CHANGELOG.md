@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/zcong1993/node-kit/compare/v0.8.0...v0.9.0) (2021-08-18)
+
+### Features
+
+- add closer manager ([7401fd1](https://github.com/zcong1993/node-kit/commit/7401fd13864070bbcba2806b1800d95860b6050d))
+- add env helpers ([bf8468e](https://github.com/zcong1993/node-kit/commit/bf8468e4e2da650de10a2120a3db372e64fadb2e))
+
 # [0.8.0](https://github.com/zcong1993/node-kit/compare/v0.7.0...v0.8.0) (2021-08-16)
 
 ### Bug Fixes
