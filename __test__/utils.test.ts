@@ -1,4 +1,4 @@
-import { ms2s, msUntilNextDay } from '../src/utils'
+import { ms2s, msUntilNextDay, sleepPromise } from '../src/utils'
 
 describe('ms2s', () => {
   test.each([
@@ -22,5 +22,12 @@ describe('msUntilNextDay', () => {
   it('not pass now', () => {
     const ms = msUntilNextDay()
     expect(ms > 0 && ms < 86400000).toBeTruthy()
+  })
+})
+
+describe('sleepPromise', () => {
+  it('should works', async () => {
+    expect(sleepPromise(100)).toBeInstanceOf(Promise)
+    await sleepPromise(50)
   })
 })

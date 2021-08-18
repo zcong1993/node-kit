@@ -18,3 +18,11 @@ export const msUntilNextDay = (now: Date = new Date()) => {
  * @returns second
  */
 export const ms2s = (ms: number) => Math.floor(ms / ONE_SECOND_IN_MS)
+
+/**
+ * helper function for sleep a moment
+ * @param ms - millsecond
+ * @returns
+ */
+export const sleepPromise = (ms: number) =>
+  new Promise<void>((r) => setTimeout(r, ms))
