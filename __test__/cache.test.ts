@@ -51,7 +51,7 @@ describe('cache', () => {
 
   it('with params', async () => {
     class Test {
-      @cache(cacher, {
+      @cache(() => cacher, {
         keyPrefix: 'cacheTest2',
         expire: () => 10,
       })
