@@ -1,3 +1,9 @@
+## [0.9.1](https://github.com/zcong1993/node-kit/compare/v0.9.0...v0.9.1) (2021-08-18)
+
+### Bug Fixes
+
+- **cache:** cacher param support getter function ([a8e7738](https://github.com/zcong1993/node-kit/commit/a8e77387386cf6576f6bdc27430b09aaa82a8160))
+
 # [0.9.0](https://github.com/zcong1993/node-kit/compare/v0.8.0...v0.9.0) (2021-08-18)
 
 ### Features
