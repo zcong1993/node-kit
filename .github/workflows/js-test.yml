@@ -39,3 +39,5 @@ jobs:
       # - uses: codecov/codecov-action@v2
       # with:
       #   token: ${{ secrets.CODECOV_TOKEN }}
+      - name: test build
+        run: yarn build
