@@ -1,4 +1,4 @@
-import { registerCloser, closeAll } from '../src/closer'
+import { closeAll, registerCloser } from '../src/closer'
 import { sleep } from './testUtils'
 
 describe('closer', () => {

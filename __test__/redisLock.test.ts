@@ -1,4 +1,4 @@
-import { tryLock, runWithMutex } from '../src/redisLock'
+import { runWithMutex, tryLock } from '../src/redisLock'
 import { repeatCall, setupRedis, sleep } from './testUtils'
 
 let redis: any

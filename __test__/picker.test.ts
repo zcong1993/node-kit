@@ -1,8 +1,8 @@
 import {
+  ConsistentHashPicker,
+  Crc32HashPicker,
   RandomPicker,
   RoundRobinPicker,
-  Crc32HashPicker,
-  ConsistentHashPicker,
 } from '../src/picker'
 import { intRange, repeatCallSync } from './testUtils'
 

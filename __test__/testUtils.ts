@@ -1,5 +1,5 @@
-import { setTimeout } from 'timers/promises'
 import Redis, { Redis as TypeRedis } from 'ioredis'
+import { setTimeout } from 'timers/promises'
 
 export const sleep = setTimeout
 

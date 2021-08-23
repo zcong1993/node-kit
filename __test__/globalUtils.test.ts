@@ -1,10 +1,10 @@
 import {
   createGlobalKey,
+  getGlobal,
+  getOrCreate,
+  getOrCreateSync,
   registerGlobal,
   unregisterGlobal,
-  getGlobal,
-  getOrCreateSync,
-  getOrCreate,
 } from '../src/globalUtils'
 import { delayFn, repeatCall } from './testUtils'
 

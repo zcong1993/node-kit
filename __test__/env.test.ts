@@ -1,4 +1,4 @@
-import { loadEnv, EnvVal } from '../src/env'
+import { EnvVal, loadEnv } from '../src/env'
 
 describe('loadEnv', () => {
   it('should work', () => {

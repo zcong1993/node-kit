@@ -1,4 +1,3 @@
-import 'reflect-metadata'
 import { Exclude, Expose, Type } from 'class-transformer'
 import {
   IsArray,
@@ -8,11 +7,12 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator'
+import 'reflect-metadata'
 import {
-  parseIntPipe,
-  parseFloatPipe,
   parseBoolPipe,
   parseEnumPipe,
+  parseFloatPipe,
+  parseIntPipe,
   PipeErrorFactory,
   validationPipe,
 } from '../src/pipes'

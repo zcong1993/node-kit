@@ -1,4 +1,4 @@
-import { Policy, RetryPolicy, IRetryContext } from 'cockatiel'
+import { IRetryContext, Policy, RetryPolicy } from 'cockatiel'
 
 const defaultPolicy = Policy.handleAll()
   .retry()

@@ -1,8 +1,8 @@
 import {
-  randString,
   isNumeric,
-  parseIntOrDefault,
   parseFloatOrDefault,
+  parseIntOrDefault,
+  randString,
 } from '../src/string'
 
 describe('string', () => {
