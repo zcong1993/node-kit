@@ -8,7 +8,7 @@ import {
 export type StringBuf = string | Buffer
 
 /**
- * get md5 string of a string of buffer
+ * get md5 string of a string or buffer
  * @param str - string of buffer to md5
  * @returns hex string
  */

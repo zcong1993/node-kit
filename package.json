@@ -1,5 +1,5 @@
 {
-  "name": "@zcong1993/node-kit",
+  "name": "@zcong/node-kit",
   "version": "0.9.1",
   "description": "my cool project",
   "main": "./dist/index.js",
@@ -71,9 +71,6 @@
   },
   "lint-staged": {
     "*": "prettier --write"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
     "@zcong/singleflight": "^0.3.0",
