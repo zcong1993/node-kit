@@ -1,3 +1,9 @@
+## [0.9.3](https://github.com/zcong1993/node-kit/compare/v0.9.2...v0.9.3) (2021-09-06)
+
+### Bug Fixes
+
+- declare missing optional peerDependencies ([8b89cdb](https://github.com/zcong1993/node-kit/commit/8b89cdb3acbc1c00bc8e68885c6b0931a28ad72f))
+
 ## [0.9.2](https://github.com/zcong1993/node-kit/compare/v0.9.1...v0.9.2) (2021-09-03)
 
 ## [0.9.1](https://github.com/zcong1993/node-kit/compare/v0.9.0...v0.9.1) (2021-08-18)
