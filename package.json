@@ -79,6 +79,30 @@
     "promise.allsettled": "^1.0.4",
     "rxjs": "^7.3.0"
   },
+  "peerDependencies": {
+    "buffer-crc32": "^0.2.13",
+    "class-transformer": "^0.4.0",
+    "class-validator": "^0.13.1",
+    "hashring": "^3.2.0",
+    "prom-client": "^13.1.0"
+  },
+  "peerDependenciesMeta": {
+    "buffer-crc32": {
+      "optional": true
+    },
+    "class-transformer": {
+      "optional": true
+    },
+    "class-validator": {
+      "optional": true
+    },
+    "hashring": {
+      "optional": true
+    },
+    "prom-client": {
+      "optional": true
+    }
+  },
   "bugs": "https://github.com/zcong1993/node-kit/issues",
   "homepage": "https://github.com/zcong1993/node-kit",
   "repository": {
