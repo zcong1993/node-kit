@@ -1,3 +1,5 @@
+## [0.9.4](https://github.com/zcong1993/node-kit/compare/v0.9.3...v0.9.4) (2021-09-07)
+
 ## [0.9.3](https://github.com/zcong1993/node-kit/compare/v0.9.2...v0.9.3) (2021-09-06)
 
 ### Bug Fixes
