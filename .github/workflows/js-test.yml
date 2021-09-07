@@ -15,29 +15,19 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-    services:
-      redis:
-        image: redis:latest
-        ports:
-          - 6379:6379
+    timeout-minutes: 10
     steps:
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          access_token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - uses: actions/setup-node@v2
         with:
           # registry-url: "https://registry.npmjs.org"
           node-version: 16
-          cache: 'yarn'
+          cache: pnpm
       - name: install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: run test
-        run: yarn test:cov
-      # - uses: codecov/codecov-action@v2
-      # with:
-      #   token: ${{ secrets.CODECOV_TOKEN }}
-      - name: test build
-        run: yarn build
+        run: pnpm test:cov
+      - uses: codecov/codecov-action@v2
