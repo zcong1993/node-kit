@@ -33,17 +33,20 @@ jobs:
           tag-version: latest
           matcher: _linux_amd64.tar.gz$
           test-cmd: gh --version
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-          cache: 'yarn'
+          cache: pnpm
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEXT: ${{ github.event.inputs.version }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: yarn release
+        run: pnpm release
