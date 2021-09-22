@@ -66,12 +66,12 @@ export const tryLock = async (
  * @param key - redis lock key
  * @param fn - run function
  * @param px - lock px in ms
- * @returns ReturnType<fn> | null
+ * @returns ReturnType<fn>
  */
 export const runWithMutex = async <T>(
   redis: Redis,
   key: string,
-  fn: () => Promise<T | null>,
+  fn: () => Promise<T>,
   px: number
 ) => {
   const [lock, unlockFn] = await tryLock(redis, key, px)
@@ -88,16 +88,16 @@ export const runWithMutex = async <T>(
 
 /**
  * run a function only once in a period of time
- * @param redis
- * @param key
- * @param fn
- * @param px
- * @returns
+ * @param redis - ioredis instance
+ * @param key - redis lock key
+ * @param fn - run function
+ * @param px - lock px in ms
+ * @returns ReturnType<fn>
  */
 export const runWithLockLimit = async <T>(
   redis: Redis,
   key: string,
-  fn: () => Promise<T | null>,
+  fn: () => Promise<T>,
   px: number
 ) => {
   const [lock] = await tryLock(redis, key, px)
