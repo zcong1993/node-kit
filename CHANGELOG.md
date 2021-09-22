@@ -1,3 +1,13 @@
+# [0.10.0](https://github.com/zcong1993/node-kit/compare/v0.9.4...v0.10.0) (2021-09-22)
+
+### Features
+
+- **redisLock:** add runWithLockLimit and tweak runWithMutex ([8b7a3bd](https://github.com/zcong1993/node-kit/commit/8b7a3bd3d1e8443a9404ef97dea2f9f3746c00bc))
+
+### BREAKING CHANGES
+
+- **redisLock:** runWithMutex will throw error NotGetLockError when not get lock not return null.
+
 ## [0.9.4](https://github.com/zcong1993/node-kit/compare/v0.9.3...v0.9.4) (2021-09-07)
 
 ## [0.9.3](https://github.com/zcong1993/node-kit/compare/v0.9.2...v0.9.3) (2021-09-06)
