@@ -1,4 +1,4 @@
-import { runWithMutex, tryLock } from '../src/redisLock'
+import { runWithMutex, tryLock, runWithLockLimit } from '../src/redisLock'
 import { repeatCall, setupRedis, sleep } from './testUtils'
 
 let redis: any
@@ -27,8 +27,12 @@ describe('redisLock', () => {
   it('runWithMutex', async () => {
     const testKey = 'testKey'
     const fn = jest.fn()
-    await repeatCall(10, () => runWithMutex(redis, testKey, fn, 10000))
+    let noLockCounter = 0
+    await repeatCall(10, () =>
+      runWithMutex(redis, testKey, fn, 10000).catch(() => noLockCounter++)
+    )
     expect(fn).toBeCalledTimes(1)
+    expect(noLockCounter).toBe(9)
     expect(await redis.dbsize()).toBe(0)
   })
 
@@ -60,5 +64,17 @@ describe('redisLock', () => {
     // freeFn2 can free instance2's lock
     await freeFn2()
     expect(await redis.dbsize()).toBe(0)
+  })
+
+  it('runWithLockLimit', async () => {
+    const testKey = 'testKey1'
+    const fn = jest.fn()
+    let noLockCounter = 0
+    await repeatCall(10, () =>
+      runWithLockLimit(redis, testKey, fn, 1000).catch(() => noLockCounter++)
+    )
+    expect(fn).toBeCalledTimes(1)
+    expect(noLockCounter).toBe(9)
+    expect(await redis.dbsize()).toBe(1)
   })
 })

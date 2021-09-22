@@ -27,6 +27,8 @@ interface ExtRedis extends Redis {
 
 export type UnLockFn = () => Promise<void>
 
+export class NotGetLockError extends Error {}
+
 /**
  * use redis create mutex lock, this function is more safety
  * cause it only unlock itself
@@ -74,7 +76,7 @@ export const runWithMutex = async <T>(
 ) => {
   const [lock, unlockFn] = await tryLock(redis, key, px)
   if (!lock) {
-    return null
+    throw new NotGetLockError()
   }
 
   try {
@@ -82,4 +84,25 @@ export const runWithMutex = async <T>(
   } finally {
     await unlockFn()
   }
+}
+
+/**
+ * run a function only once in a period of time
+ * @param redis
+ * @param key
+ * @param fn
+ * @param px
+ * @returns
+ */
+export const runWithLockLimit = async <T>(
+  redis: Redis,
+  key: string,
+  fn: () => Promise<T | null>,
+  px: number
+) => {
+  const [lock] = await tryLock(redis, key, px)
+  if (!lock) {
+    throw new NotGetLockError()
+  }
+  return fn()
 }
