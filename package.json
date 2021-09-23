@@ -19,8 +19,7 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "api-types": "api-extractor run",
-    "release": "node ./scripts/release.js",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path ."
+    "release": "js-release"
   },
   "types": "./dist/index.d.ts",
   "author": "zcong1993",
@@ -36,6 +35,7 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
+    "@zcong/js-release": "^0.2.5",
     "@zcong/node-redis-cache": "^0.7.2",
     "buffer-crc32": "^0.2.13",
     "chalk": "^4.1.2",
