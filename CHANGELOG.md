@@ -1,3 +1,9 @@
+# [0.11.0](https://github.com/zcong1993/node-kit/compare/v0.10.1...v0.11.0) (2021-10-08)
+
+### Features
+
+- redis counter ([696c8fc](https://github.com/zcong1993/node-kit/commit/696c8fc2129a5152782c91ee553801a99d25a9bf))
+
 ## [0.10.1](https://github.com/zcong1993/node-kit/compare/v0.10.0...v0.10.1) (2021-09-23)
 
 # [0.10.0](https://github.com/zcong1993/node-kit/compare/v0.9.4...v0.10.0) (2021-09-22)
