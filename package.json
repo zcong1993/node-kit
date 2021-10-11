@@ -35,7 +35,7 @@
     "@types/node": "^16.4.6",
     "@types/promise.allsettled": "^1.0.3",
     "@types/supertest": "^2.0.11",
-    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^4.28.5",
     "@zcong/js-release": "^0.2.5",
     "@zcong/node-redis-cache": "^0.7.2",
