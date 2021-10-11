@@ -1,3 +1,9 @@
+# [0.12.0](https://github.com/zcong1993/node-kit/compare/v0.11.0...v0.12.0) (2021-10-11)
+
+### Features
+
+- add jwt wrapper ([34cccc2](https://github.com/zcong1993/node-kit/commit/34cccc2877d14187cc272f2124c11cb8f730892f))
+
 # [0.11.0](https://github.com/zcong1993/node-kit/compare/v0.10.1...v0.11.0) (2021-10-08)
 
 ### Features
