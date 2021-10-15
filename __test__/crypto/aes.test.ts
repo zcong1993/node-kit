@@ -1,11 +1,11 @@
 import { randomBytes } from 'crypto'
 import { randRangeInt, randString } from '../../src'
-import { AesGcm, AesGcmType } from '../../src/crypto/aes'
+import { AesGCM, AesGCMType } from '../../src/crypto/aes'
 import { intRange } from '../testUtils'
 
-describe.each([128, 192, 256])('aes-%d-gcm', (t: AesGcmType) => {
+describe.each([128, 192, 256])('aes-%d-gcm', (t: AesGCMType) => {
   const keyLen = t / 8
-  const ac = new AesGcm(t)
+  const ac = new AesGCM(t)
   it('should works', () => {
     intRange(100).forEach(() => {
       const key = randString(keyLen)
@@ -19,14 +19,14 @@ describe.each([128, 192, 256])('aes-%d-gcm', (t: AesGcmType) => {
 
 describe('invald type', () => {
   it('should throw', () => {
-    expect(() => new AesGcm(100 as any)).toThrow()
+    expect(() => new AesGCM(100 as any)).toThrow()
   })
 })
 
 describe('test decrypt encrypted data from golang', () => {
   const testData = 'hello2222-cdscsdcsd'
   it('aes-256-gcm', () => {
-    const ac = new AesGcm(256)
+    const ac = new AesGCM(256)
     expect(
       ac
         .decrypt(
@@ -41,7 +41,7 @@ describe('test decrypt encrypted data from golang', () => {
   })
 
   it('aes-192-gcm', () => {
-    const ac = new AesGcm(192)
+    const ac = new AesGCM(192)
     expect(
       ac
         .decrypt(
@@ -56,7 +56,7 @@ describe('test decrypt encrypted data from golang', () => {
   })
 
   it('aes-128-gcm', () => {
-    const ac = new AesGcm(128)
+    const ac = new AesGCM(128)
     expect(
       ac
         .decrypt(

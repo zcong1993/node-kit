@@ -6,14 +6,14 @@ import {
   CipherGCMTypes,
 } from 'crypto'
 
-export type AesGcmType = 128 | 192 | 256
+export type AesGCMType = 128 | 192 | 256
 
-// AesGcm compact with golang
-export class AesGcm {
+// AesGCM compact with golang
+export class AesGCM {
   static authTagLength = 16
   static ivLength = 12
   private algorithm: CipherGCMTypes
-  constructor(readonly type: AesGcmType) {
+  constructor(readonly type: AesGCMType) {
     if (![128, 192, 256].includes(type)) {
       throw new Error('aes gcm type should be one of 128, 192, 256')
     }
@@ -28,7 +28,7 @@ export class AesGcm {
    * @returns [iv:12][encryptedString][authTag:16]
    */
   encrypt(plaintext: BinaryLike, key: string) {
-    const iv = randomBytes(AesGcm.ivLength)
+    const iv = randomBytes(AesGCM.ivLength)
     const cipher = createCipheriv(this.algorithm, key, iv)
     const encryptedBuffer = Buffer.concat([
       cipher.update(plaintext),
