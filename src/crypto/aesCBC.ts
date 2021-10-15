@@ -1,9 +1,5 @@
-import {
-  createCipheriv,
-  createDecipheriv,
-  randomBytes,
-  BinaryLike,
-} from 'crypto'
+import { randomBytes, BinaryLike } from 'crypto'
+import { simpleAesEncrypt, simpleAesDecrypt } from './util'
 
 // AesCBC compact with golang
 export class AesCBC {
@@ -18,12 +14,7 @@ export class AesCBC {
    */
   static encrypt(plaintext: BinaryLike, key: string) {
     const iv = randomBytes(AesCBC.ivLength)
-    const cipher = createCipheriv(AesCBC.getAlgorithmByKey(key), key, iv)
-    const encryptedBuffer = Buffer.concat([
-      cipher.update(plaintext),
-      cipher.final(),
-    ])
-    return Buffer.concat([iv, encryptedBuffer])
+    return simpleAesEncrypt(AesCBC.getAlgorithmByKey(key), plaintext, key, iv)
   }
 
   /**
@@ -33,10 +24,12 @@ export class AesCBC {
    * @returns Buffer
    */
   static decrypt(encrypted: Buffer, key: string) {
-    const iv = encrypted.slice(0, AesCBC.ivLength)
-    const encryptedText = encrypted.slice(AesCBC.ivLength)
-    const decipher = createDecipheriv(AesCBC.getAlgorithmByKey(key), key, iv)
-    return Buffer.concat([decipher.update(encryptedText), decipher.final()])
+    return simpleAesDecrypt(
+      AesCBC.getAlgorithmByKey(key),
+      encrypted,
+      key,
+      AesCBC.ivLength
+    )
   }
 
   /**
