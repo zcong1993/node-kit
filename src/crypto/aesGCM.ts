@@ -6,8 +6,6 @@ import {
   CipherGCMTypes,
 } from 'crypto'
 
-export type AesGCMType = 128 | 192 | 256
-
 // AesGCM compact with golang
 export class AesGCM {
   static validKeyLengths = [16, 24, 32]

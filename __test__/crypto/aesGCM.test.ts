@@ -1,9 +1,9 @@
 import { randomBytes } from 'crypto'
 import { randRangeInt, randString } from '../../src'
-import { AesGCM, AesGCMType } from '../../src/crypto/aesGCM'
+import { AesGCM } from '../../src/crypto/aesGCM'
 import { intRange } from '../testUtils'
 
-describe.each([128, 192, 256])('aes-%d-gcm', (t: AesGCMType) => {
+describe.each([128, 192, 256])('aes-%d-gcm', (t) => {
   const keyLen = t / 8
   it('should works', () => {
     intRange(100).forEach(() => {
