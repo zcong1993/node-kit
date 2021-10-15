@@ -1,3 +1,13 @@
+# [0.13.0](https://github.com/zcong1993/node-kit/compare/v0.12.0...v0.13.0) (2021-10-15)
+
+### Features
+
+- **crypto:** add golang compatable aes cbc ([d4fbb41](https://github.com/zcong1993/node-kit/commit/d4fbb4192223180c6edeb952d81d642cf68e3ed2))
+- **crypto:** add golang compatable aes cfb ([21b0483](https://github.com/zcong1993/node-kit/commit/21b0483510de58a956c52174caa4c7d1af2a9153))
+- **crypto:** add golang compatable aes ctr ([beceb0c](https://github.com/zcong1993/node-kit/commit/beceb0cd3f9f032bc2bb4d54fab62a989f682aa2))
+- **crypto:** add golang compatable aes gcm ([66e6ce0](https://github.com/zcong1993/node-kit/commit/66e6ce05e215f840ac13d1802a4145f75fee9777))
+- unstableDeviation ([dffaafa](https://github.com/zcong1993/node-kit/commit/dffaafaef76518ffad70bf75970cda027c584f8c))
+
 # [0.12.0](https://github.com/zcong1993/node-kit/compare/v0.11.0...v0.12.0) (2021-10-11)
 
 ### Features
