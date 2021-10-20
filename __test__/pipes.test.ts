@@ -193,11 +193,9 @@ describe('validationPipe', () => {
       const model = new TestModelWithNested()
       model.test = new TestModel2()
 
-      try {
+      expect(() =>
         validationPipe(TestModelWithNested, model)
-      } catch (err) {
-        expect(err.message).toMatchSnapshot()
-      }
+      ).toThrowErrorMatchingSnapshot()
     })
 
     class TestModelForNestedArrayValidation {
@@ -213,11 +211,9 @@ describe('validationPipe', () => {
       const model = new TestModelForNestedArrayValidation()
       model.test = [new TestModel2()]
 
-      try {
+      expect(() =>
         validationPipe(TestModelForNestedArrayValidation, model)
-      } catch (err) {
-        expect(err.message).toMatchSnapshot()
-      }
+      ).toThrowErrorMatchingSnapshot()
     })
   })
 

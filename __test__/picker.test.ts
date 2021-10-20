@@ -55,16 +55,11 @@ describe('Crc32HashPicker', () => {
   const nodes = intRange(20)
   const rp = new Crc32HashPicker(nodes)
 
-  let picked: number
-
   it('should works', () => {
+    const picked = rp.pick('test')
     repeatCallSync(100, () => {
       const cur = rp.pick('test')
-      if (!picked) {
-        picked = cur
-      } else {
-        expect(cur).toBe(picked)
-      }
+      expect(cur).toBe(picked)
     })
   })
 })
@@ -81,15 +76,11 @@ describe('ConsistentHashPicker', () => {
   )
 
   it('should works', () => {
-    let picked: number
+    const picked = rp.pick('test')
 
     repeatCallSync(100, () => {
       const cur = rp.pick('test')
-      if (!picked) {
-        picked = cur
-      } else {
-        expect(cur).toBe(picked)
-      }
+      expect(cur).toBe(picked)
     })
   })
 
@@ -102,15 +93,11 @@ describe('ConsistentHashPicker', () => {
     )
 
     repeatCallSync(100, () => {
-      let picked: number
+      const picked = rp.pick('test')
 
       repeatCallSync(100, () => {
         const cur = rp.pick('test')
-        if (!picked) {
-          picked = cur
-        } else {
-          expect(cur).toBe(picked)
-        }
+        expect(cur).toBe(picked)
       })
     })
   })

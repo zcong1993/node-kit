@@ -65,7 +65,7 @@ describe('globalUtils', () => {
     expect(fn).toBeCalledTimes(1)
   })
 
-  it('getOrCreate', async () => {
+  it('getOrCreate already registered', async () => {
     unregisterGlobal(test1)
     registerGlobal(test1, testInstance1)
 

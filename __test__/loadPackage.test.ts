@@ -1,5 +1,7 @@
 import { loadPackage, loadPackageOnce } from '../src/loadPackage'
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 describe('loadPackage', () => {
   it('should return package', () => {
     expect(loadPackage('@zcong/singleflight', 'test')).toStrictEqual(

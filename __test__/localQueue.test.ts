@@ -1,6 +1,8 @@
 import { LocalQueue, LocalQueueError } from '../src/localQueue'
 import { delayFn, intRange } from './testUtils'
 
+/* eslint-disable jest/no-done-callback, jest/expect-expect */
+
 describe('LocalQueue', () => {
   it('should works', (done) => {
     const res: any[] = []
