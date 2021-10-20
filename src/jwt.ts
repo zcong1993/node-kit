@@ -1,10 +1,10 @@
-import { loadPackage } from '@zcong/node-redis-cache'
 import type {
   Secret,
   GetPublicKeyOrSecret,
   VerifyOptions,
   SignOptions,
 } from 'jsonwebtoken'
+import { loadPackage } from './loadPackage'
 
 export interface SimpleJWTOption {
   secret: string
