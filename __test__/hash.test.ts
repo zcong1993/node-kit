@@ -1,4 +1,4 @@
-import { md5 } from '../src/hash'
+import { md5, sha256 } from '../src/hash'
 
 describe('md5', () => {
   test.each([
@@ -9,5 +9,20 @@ describe('md5', () => {
     ['f799c7725ba6830f41f0a8f886c6ff94', '13778'],
   ])('%s', (expected, str) => {
     expect(md5(str)).toBe(expected)
+  })
+})
+
+describe('sha256', () => {
+  test.each([
+    [
+      'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9',
+      'hello world',
+    ],
+    [
+      'a9c1e985d0fe870ea3d205b27323084371b1dcfdd2696f10fa57fce1d1e0dc5d',
+      'areeb2015',
+    ],
+  ])('%s', (expected, str) => {
+    expect(sha256(str)).toBe(expected)
   })
 })
