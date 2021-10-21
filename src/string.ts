@@ -1,4 +1,5 @@
 import crypto from 'crypto'
+import { StringBuf } from './types'
 
 /**
  * create len(n) random string
@@ -56,3 +57,19 @@ export const parseFloatOrDefault = (
 
   return parseFloat(value as string)
 }
+
+/**
+ * base64 encode
+ * @param str - string | Buffer
+ * @returns base64 string
+ */
+export const base64Encode = (str: StringBuf): string =>
+  Buffer.from(str).toString('base64')
+
+/**
+ * base64 decode
+ * @param b64 - base64 string
+ * @returns string
+ */
+export const base64Decode = (b64: string): string =>
+  Buffer.from(b64, 'base64').toString()

@@ -3,6 +3,8 @@ import {
   parseFloatOrDefault,
   parseIntOrDefault,
   randString,
+  base64Decode,
+  base64Encode,
 } from '../src/string'
 
 describe('string', () => {
@@ -50,5 +52,26 @@ describe('parseFloatOrDefault', () => {
   it('invalid', () => {
     expect(parseFloatOrDefault('11aa', 1)).toBe(1)
     expect(parseFloatOrDefault('-11bb', 1.1)).toBe(1.1)
+  })
+})
+
+describe('base64', () => {
+  it('encode decode', () => {
+    for (let i = 0; i < 100; i++) {
+      const str = randString(i)
+      const b64 = base64Encode(str)
+      expect(base64Decode(b64)).toBe(str)
+    }
+  })
+
+  it('encode buffer', () => {
+    const str = 'test'
+    const strBuf = Buffer.from('test')
+    const b64 = base64Encode(strBuf)
+    expect(base64Decode(b64)).toBe(str)
+  })
+
+  it('compatable test', () => {
+    expect(base64Decode('YWJjMTIzIT8kKiYoKSctPUB+')).toBe(`abc123!?$*&()'-=@~`)
   })
 })

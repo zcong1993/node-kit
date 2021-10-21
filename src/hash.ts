@@ -1,6 +1,5 @@
 import { createHash } from 'crypto'
-
-export type StringBuf = string | Buffer
+import { StringBuf } from './types'
 
 /**
  * get md5 string of a string or buffer
