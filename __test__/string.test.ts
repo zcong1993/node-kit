@@ -5,6 +5,8 @@ import {
   randString,
   base64Decode,
   base64Encode,
+  hexEncode,
+  hexDecode,
 } from '../src/string'
 
 describe('string', () => {
@@ -73,5 +75,26 @@ describe('base64', () => {
 
   it('compatable test', () => {
     expect(base64Decode('YWJjMTIzIT8kKiYoKSctPUB+')).toBe(`abc123!?$*&()'-=@~`)
+  })
+})
+
+describe('hex', () => {
+  it('encode decode', () => {
+    for (let i = 0; i < 100; i++) {
+      const str = randString(i)
+      const enc = hexEncode(str)
+      expect(hexDecode(enc)).toBe(str)
+    }
+  })
+
+  it('encode buffer', () => {
+    const str = 'test'
+    const strBuf = Buffer.from('test')
+    const enc = hexEncode(strBuf)
+    expect(hexDecode(enc)).toBe(str)
+  })
+
+  it('compatable test', () => {
+    expect(hexDecode('68656C6C6F20776F726C64')).toBe('hello world')
   })
 })

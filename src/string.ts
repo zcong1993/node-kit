@@ -73,3 +73,15 @@ export const base64Encode = (str: StringBuf): string =>
  */
 export const base64Decode = (b64: string): string =>
   Buffer.from(b64, 'base64').toString()
+
+/**
+ * hex encode
+ * @param str - string | Buffer
+ */
+export const hexEncode = (str: StringBuf) => Buffer.from(str).toString('hex')
+
+/**
+ * hex decode
+ * @param str - hex string
+ */
+export const hexDecode = (str: string) => Buffer.from(str, 'hex').toString()
