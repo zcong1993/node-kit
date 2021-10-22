@@ -1,9 +1,23 @@
-import { IRetryContext, Policy, RetryPolicy } from 'cockatiel'
+import {
+  IExponentialBackoffOptions,
+  IRetryContext,
+  Policy,
+  RetryPolicy,
+} from 'cockatiel'
 
 const defaultPolicy = Policy.handleAll()
   .retry()
   .attempts(3)
   .exponential({ initialDelay: 1000 })
+
+export const createSimpleRetryPolicy = (
+  attemptsCount: number,
+  exponentialOptions?: Partial<IExponentialBackoffOptions<unknown>>
+) =>
+  Policy.handleAll()
+    .retry()
+    .attempts(attemptsCount)
+    .exponential(exponentialOptions)
 
 const noopHandler = () => {}
 

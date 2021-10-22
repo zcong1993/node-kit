@@ -1,8 +1,15 @@
-import { Policy } from 'cockatiel'
-import { RetryError, runWithRetry } from '../src/retry'
+import { Policy, RetryPolicy } from 'cockatiel'
+import { RetryError, runWithRetry, createSimpleRetryPolicy } from '../src/retry'
 import { delayFn } from './testUtils'
 
 describe('retry', () => {
+  it('createSimpleRetryPolicy', () => {
+    expect(createSimpleRetryPolicy(3)).toBeInstanceOf(RetryPolicy)
+    expect(createSimpleRetryPolicy(3, { initialDelay: 3000 })).toBeInstanceOf(
+      RetryPolicy
+    )
+  })
+
   it('should work', async () => {
     let i = 0
     const fn = async () => {
