@@ -1,5 +1,5 @@
 dist
 coverage
 yarn.lock
-.*
+.devcontainer
 pnpm-lock.yaml

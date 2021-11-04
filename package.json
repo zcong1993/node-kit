@@ -65,6 +65,7 @@
     "semver": "^7.3.5",
     "supertest": "^6.1.6",
     "ts-jest": "^27.0.5",
+    "ts-node": "^10.4.0",
     "typescript": "^4.4.3"
   },
   "jest": {
