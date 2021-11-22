@@ -1,3 +1,17 @@
+## [0.13.1](https://github.com/zcong1993/node-kit/compare/v0.13.0...v0.13.1) (2021-11-22)
+
+### Bug Fixes
+
+- expose batchProcessor ([abc1071](https://github.com/zcong1993/node-kit/commit/abc10712677b0fde6cabf7c54ba05abdbcd32a39))
+- jwt deps import ([45f1e58](https://github.com/zcong1993/node-kit/commit/45f1e586db23e5cf674f2648de99344246ffdbe4))
+
+### Features
+
+- add base64 encode and decode ([8bb9496](https://github.com/zcong1993/node-kit/commit/8bb9496cac982e41e0976814ad23737bc857549f))
+- add hex encode decode ([7609be7](https://github.com/zcong1993/node-kit/commit/7609be7130b6821a54596a8d0aa1889dca66e00f))
+- add sha256, fix [#21](https://github.com/zcong1993/node-kit/issues/21) ([078cfb4](https://github.com/zcong1993/node-kit/commit/078cfb44deb06423050c1a7c59b8199d015171e2))
+- batchProcessor ([dbfab90](https://github.com/zcong1993/node-kit/commit/dbfab9016996c9ba688a069fe8d5b5d38ae0e062))
+
 # [0.13.0](https://github.com/zcong1993/node-kit/compare/v0.12.0...v0.13.0) (2021-10-15)
 
 ### Features
