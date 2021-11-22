@@ -41,7 +41,7 @@
     "@zcong/node-redis-cache": "^0.7.2",
     "buffer-crc32": "^0.2.13",
     "chalk": "^4.1.2",
-    "class-transformer": "^0.4.0",
+    "class-transformer": "^0.5.0",
     "class-validator": "^0.13.1",
     "conventional-changelog-cli": "^2.1.1",
     "eslint": "^8.0.0",
@@ -87,7 +87,7 @@
   },
   "peerDependencies": {
     "buffer-crc32": "^0.2.13",
-    "class-transformer": "^0.4.0",
+    "class-transformer": "^0.5.0",
     "class-validator": "^0.13.1",
     "hashring": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
