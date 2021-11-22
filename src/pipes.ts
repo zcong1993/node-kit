@@ -119,7 +119,7 @@ export const validationPipe = <T>(
 
   stripProtoKeys(value)
 
-  const entity = classTransformer.plainToClass(
+  const entity = classTransformer.plainToInstance(
     Cls,
     value,
     option.transformOptions
@@ -139,6 +139,6 @@ export const validationPipe = <T>(
 
   return option.validatorOptions &&
     Object.keys(option.validatorOptions).length > 0
-    ? classTransformer.classToPlain(entity, option.transformOptions)
+    ? classTransformer.instanceToPlain(entity, option.transformOptions)
     : value
 }
