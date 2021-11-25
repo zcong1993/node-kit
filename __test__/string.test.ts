@@ -7,6 +7,7 @@ import {
   base64Encode,
   hexEncode,
   hexDecode,
+  buildKey,
 } from '../src/string'
 
 describe('string', () => {
@@ -96,5 +97,16 @@ describe('hex', () => {
 
   it('compatable test', () => {
     expect(hexDecode('68656C6C6F20776F726C64')).toBe('hello world')
+  })
+})
+
+describe('buildKey', () => {
+  it('without empty', () => {
+    expect(buildKey(['a', 'b', 'c'])).toBe('a:b:c')
+    expect(buildKey(['a', 'b', 'c'], ',')).toBe('a,b,c')
+  })
+
+  it('with empty', () => {
+    expect(buildKey(['a', '', 'c'])).toBe('a:c')
   })
 })

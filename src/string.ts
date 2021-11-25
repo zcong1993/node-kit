@@ -85,3 +85,6 @@ export const hexEncode = (str: StringBuf) => Buffer.from(str).toString('hex')
  * @param str - hex string
  */
 export const hexDecode = (str: string) => Buffer.from(str, 'hex').toString()
+
+export const buildKey = (keys: string[], step = ':') =>
+  keys.filter(Boolean).join(step)

@@ -26,3 +26,16 @@ export const ms2s = (ms: number) => Math.floor(ms / ONE_SECOND_IN_MS)
  */
 export const sleepPromise = (ms: number) =>
   new Promise<void>((r) => setTimeout(r, ms))
+
+export const objOnceGuard = <T extends object>(
+  obj: T,
+  key: symbol,
+  fn: () => void
+) => {
+  if ((obj as any)[key]) {
+    return
+  }
+
+  ;(obj as any)[key] = true
+  fn()
+}

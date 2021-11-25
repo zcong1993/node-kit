@@ -1,4 +1,5 @@
-import { ms2s, msUntilNextDay, sleepPromise } from '../src/utils'
+import { ms2s, msUntilNextDay, sleepPromise, objOnceGuard } from '../src/utils'
+import { repeatCallSync } from './testUtils'
 
 describe('ms2s', () => {
   test.each([
@@ -29,5 +30,18 @@ describe('sleepPromise', () => {
   it('should works', async () => {
     expect(sleepPromise(100)).toBeInstanceOf(Promise)
     await sleepPromise(50)
+  })
+})
+
+describe('objOnceGuard', () => {
+  it('should works', () => {
+    const obj: any = {}
+    const fn = jest.fn()
+    const key = Symbol.for('test')
+
+    repeatCallSync(10, () => objOnceGuard(obj, key, fn))
+
+    expect(fn).toBeCalledTimes(1)
+    expect(obj[key]).toBeTruthy()
   })
 })
