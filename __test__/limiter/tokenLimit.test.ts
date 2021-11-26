@@ -60,4 +60,18 @@ describe('TokenLimiter', () => {
 
     expect(allow >= burst).toBeTruthy()
   })
+
+  it('test invalid n', async () => {
+    const rate = 5
+    const burst = 10
+
+    const tl = new TokenLimiter({
+      redis,
+      keyPrefix: 'TokenLimiter2',
+      rate,
+      burst,
+    })
+
+    await expect(() => tl.allowN('test3', -10)).rejects.toThrow()
+  })
 })
