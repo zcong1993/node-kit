@@ -6,7 +6,7 @@ import {
 import { delayFn } from './testUtils'
 
 describe('aggregator', () => {
-  it('should works', async () => {
+  it.concurrent('should works', async () => {
     const [res1, res2] = await aggregator([
       {
         fn: delayFn(100, 1),
@@ -20,7 +20,7 @@ describe('aggregator', () => {
     expect(res2).toBe('x')
   })
 
-  it('fallback', async () => {
+  it.concurrent('fallback', async () => {
     const [res1, res2] = await aggregator([
       {
         fn: async () => {
@@ -40,7 +40,7 @@ describe('aggregator', () => {
     expect(res2).toBe('x')
   })
 
-  it('without fallback should throw', async () => {
+  it.concurrent('without fallback should throw', async () => {
     await expect(
       aggregator([
         {
@@ -55,7 +55,7 @@ describe('aggregator', () => {
     ).rejects.toThrow('x2')
   })
 
-  it('fallback throw should throw', async () => {
+  it.concurrent('fallback throw should throw', async () => {
     await expect(
       aggregator([
         {
@@ -73,7 +73,7 @@ describe('aggregator', () => {
     ).rejects.toThrow('x3')
   })
 
-  it('onError', async () => {
+  it.concurrent('onError', async () => {
     const onError = jest.fn()
     const [res1, res2] = await aggregator(
       [

@@ -15,6 +15,7 @@
     "format": "prettier --write .",
     "jest": "jest --detectOpenHandles --forceExit",
     "jest:cov": "npm run jest -- --coverage",
+    "jest:local": "npm run jest -- -o",
     "prepublishOnly": "npm run build",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
