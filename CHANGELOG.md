@@ -1,3 +1,10 @@
+# [0.14.0](https://github.com/zcong1993/node-kit/compare/v0.13.1...v0.14.0) (2021-11-26)
+
+### Features
+
+- add periodLimit ([221bbc3](https://github.com/zcong1993/node-kit/commit/221bbc36025dada39e2cc0b71ba1bd8f3d31fab0))
+- add token limit ([1971068](https://github.com/zcong1993/node-kit/commit/197106830b5e804078a0e60baff98575fb4b820a))
+
 ## [0.13.1](https://github.com/zcong1993/node-kit/compare/v0.13.0...v0.13.1) (2021-11-22)
 
 ### Bug Fixes
