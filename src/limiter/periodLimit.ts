@@ -42,6 +42,8 @@ export enum PeriodLimiterState {
   OverQuota = 3,
 }
 
+// go-zero periodlimit
+// https://github.com/zeromicro/go-zero/blob/c800f6f723cfab236e4caf8f9ae7f066d10bc90f/core/limit/periodlimit.go
 export class PeriodLimiter {
   private redis: ExtRedis
   constructor(private readonly option: PeriodLimiterOption) {
@@ -50,11 +52,11 @@ export class PeriodLimiter {
   }
 
   /**
-   * Take requests a permit, it returns the permit state.
+   * Allow requests a permit, it returns the permit state.
    * @param key - key group
    * @returns [canPass, stateDetail]
    */
-  async take(key: string): Promise<[boolean, PeriodLimiterState]> {
+  async allow(key: string): Promise<[boolean, PeriodLimiterState]> {
     const realKey = buildKey([this.option.keyPrefix, key])
     const resp = await this.redis.periodLimit(
       realKey,

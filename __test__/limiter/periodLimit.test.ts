@@ -33,7 +33,7 @@ describe('PeriodLimiter', () => {
     let pass = 0
 
     await repeatCall(total, async () => {
-      const res = await pl.take('test')
+      const res = await pl.allow('test')
       tmpArr[res[1]]++
       if (res[0]) {
         pass++
