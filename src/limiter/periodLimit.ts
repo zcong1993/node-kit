@@ -36,9 +36,11 @@ export interface PeriodLimiterOption {
   keyPrefix: string
 }
 
-export const Allowed = 1
-export const HitQuota = 2
-export const OverQuota = 3
+export enum PeriodLimiterState {
+  Allowed = 1,
+  HitQuota = 2,
+  OverQuota = 3,
+}
 
 export class PeriodLimiter {
   private redis: ExtRedis
@@ -47,7 +49,12 @@ export class PeriodLimiter {
     this.redis = option.redis as ExtRedis
   }
 
-  async take(key: string) {
+  /**
+   * Take requests a permit, it returns the permit state.
+   * @param key - key group
+   * @returns [canPass, stateDetail]
+   */
+  async take(key: string): Promise<[boolean, PeriodLimiterState]> {
     const realKey = buildKey([this.option.keyPrefix, key])
     const resp = await this.redis.periodLimit(
       realKey,
@@ -56,11 +63,11 @@ export class PeriodLimiter {
     )
     switch (resp) {
       case 0:
-        return OverQuota
+        return [false, PeriodLimiterState.OverQuota]
       case 1:
-        return Allowed
+        return [true, PeriodLimiterState.Allowed]
       case 2:
-        return HitQuota
+        return [true, PeriodLimiterState.HitQuota]
       /* istanbul ignore next */
       default:
         throw new Error('invalid code')

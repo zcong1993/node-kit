@@ -1,8 +1,6 @@
 import {
   PeriodLimiter,
-  Allowed,
-  HitQuota,
-  OverQuota,
+  PeriodLimiterState,
 } from '../../src/limiter/periodLimit'
 import { repeatCall, setupRedis } from '../testUtils'
 
@@ -32,13 +30,19 @@ describe('PeriodLimiter', () => {
 
     const tmpArr: number[] = Array(4).fill(0)
 
+    let pass = 0
+
     await repeatCall(total, async () => {
       const res = await pl.take('test')
-      tmpArr[res]++
+      tmpArr[res[1]]++
+      if (res[0]) {
+        pass++
+      }
     })
 
-    expect(tmpArr[Allowed]).toBe(quota - 1)
-    expect(tmpArr[HitQuota]).toBe(1)
-    expect(tmpArr[OverQuota]).toBe(total - quota)
+    expect(tmpArr[PeriodLimiterState.Allowed]).toBe(quota - 1)
+    expect(tmpArr[PeriodLimiterState.HitQuota]).toBe(1)
+    expect(tmpArr[PeriodLimiterState.OverQuota]).toBe(total - quota)
+    expect(pass).toBe(quota)
   })
 })
