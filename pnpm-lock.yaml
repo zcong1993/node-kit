@@ -17,7 +17,7 @@ specifiers:
   '@zcong/node-redis-cache': ^0.7.4
   '@zcong/singleflight': ^0.3.0
   buffer-crc32: ^0.2.13
-  chalk: ^4.1.2
+  chalk: ^5.0.0
   class-transformer: ^0.5.0
   class-validator: ^0.13.2
   cockatiel: ^2.0.2
@@ -75,7 +75,7 @@ devDependencies:
   '@zcong/js-release': 0.2.5
   '@zcong/node-redis-cache': 0.7.4
   buffer-crc32: 0.2.13
-  chalk: 4.1.2
+  chalk: 5.0.0
   class-transformer: 0.5.0
   class-validator: 0.13.2
   conventional-changelog-cli: 2.1.1
@@ -1594,6 +1594,11 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: true
+
+  /chalk/5.0.0:
+    resolution: {integrity: sha512-/duVOqst+luxCQRKEo4bNxinsOQtMP80ZYm7mMqzuh5PociNL0PvmHFvREJ9ueYL2TxlHjBcmLCdmocx9Vg+IQ==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: true
 
   /char-regex/1.0.2:
