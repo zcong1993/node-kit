@@ -4,6 +4,7 @@ specifiers:
   '@microsoft/api-extractor': ^7.18.19
   '@nestjs/common': ^8.2.3
   '@types/hashring': ^3.2.1
+  '@types/imurmurhash': ^0.1.1
   '@types/ioredis': ^4.28.1
   '@types/jest': ^27.0.3
   '@types/jsonwebtoken': ^8.5.6
@@ -30,6 +31,7 @@ specifiers:
   execa: ^6.0.0
   hashring: ^3.2.0
   husky: ^7.0.4
+  imurmurhash: ^0.1.4
   ioredis: ^4.28.0
   iterare: ^1.2.1
   jest: ^27.3.1
@@ -63,6 +65,7 @@ devDependencies:
   '@microsoft/api-extractor': 7.18.20
   '@nestjs/common': 8.2.3_7b1fc936b9361df55228aaa721957d0e
   '@types/hashring': 3.2.1
+  '@types/imurmurhash': 0.1.1
   '@types/ioredis': 4.28.2
   '@types/jest': 27.0.3
   '@types/jsonwebtoken': 8.5.6
@@ -87,6 +90,7 @@ devDependencies:
   execa: 6.0.0
   hashring: 3.2.0
   husky: 7.0.4
+  imurmurhash: 0.1.4
   ioredis: 4.28.2
   jest: 27.4.3_ts-node@10.4.0
   jsonwebtoken: 8.5.1
@@ -901,6 +905,10 @@ packages:
     resolution: {integrity: sha512-69vRQ10rZ0rj+KHMel6vSJpy9p7O5FsiczuS7RrzqaXpL4RYYPaW4MeseOISAJ0KQo+WUknXIYLwmFHhTTJrew==}
     dependencies:
       '@types/node': 16.11.11
+    dev: true
+
+  /@types/imurmurhash/0.1.1:
+    resolution: {integrity: sha512-ThbETc7uxx6rIpNP0fE3bqrSSIeBWPrFY4TzY4WFsvdQYWinub+PLZV/9nT3zicRJJPWbmHqJIsHZHeh5Ad+Ug==}
     dev: true
 
   /@types/ioredis/4.28.2:
