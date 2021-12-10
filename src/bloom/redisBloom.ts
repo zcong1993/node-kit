@@ -13,6 +13,9 @@ export const estimateParameters = (
   return [m, k]
 }
 
+// from go-zero and bits-and-blooms/bloom projects
+// https://github.com/zeromicro/go-zero/blob/07191dc430f43a362f1030e1d1d871e6d8227ab8/core/bloom/bloom.go
+// https://github.com/bits-and-blooms/bloom
 export class RedisBloom {
   private readonly murmur32: any
   private readonly redisBitSet: RedisBitSet
@@ -30,6 +33,7 @@ export class RedisBloom {
   /**
    * NewWithEstimates creates a new Bloom filter for about n items
    * with fp false positive rate
+   * https://github.com/bits-and-blooms/bloom
    * @param n - n items
    * @param fp - false positive rate
    * @returns
