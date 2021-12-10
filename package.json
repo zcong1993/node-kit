@@ -120,6 +120,9 @@
     },
     "date-fns": {
       "optional": true
+    },
+    "imurmurhash": {
+      "optional": true
     }
   },
   "bugs": "https://github.com/zcong1993/node-kit/issues",
