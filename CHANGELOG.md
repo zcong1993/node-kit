@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/zcong1993/node-kit/compare/v0.14.0...v0.15.0) (2021-12-10)
+
+### Features
+
+- add redis bloom ([9ceb622](https://github.com/zcong1993/node-kit/commit/9ceb6222280e8de1907349745cdc7b1c0020bf44))
+- add simple date format helpers ([be05884](https://github.com/zcong1993/node-kit/commit/be05884e8062a02cf020dca7ec590ed5ba600ca4))
+
 # [0.14.0](https://github.com/zcong1993/node-kit/compare/v0.13.1...v0.14.0) (2021-11-26)
 
 ### Features
