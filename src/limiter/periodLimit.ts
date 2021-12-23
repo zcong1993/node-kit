@@ -70,7 +70,7 @@ export class PeriodLimiter {
         return [true, PeriodLimiterState.Allowed]
       case 2:
         return [true, PeriodLimiterState.HitQuota]
-      /* istanbul ignore next */
+      /* c8 ignore next 2 */
       default:
         throw new Error('invalid code')
     }

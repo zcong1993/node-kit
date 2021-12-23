@@ -75,7 +75,7 @@ export class BatchProcessor<T = any> {
 
   private async flushOneBatch(): Promise<void> {
     this.clearTimer()
-    /* istanbul ignore next */
+    /* c8 ignore next 3 */
     if (this.tasks.length === 0) {
       return
     }

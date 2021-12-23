@@ -76,7 +76,8 @@
     "preset": "ts-jest",
     "collectCoverageFrom": [
       "src/**/*.ts"
-    ]
+    ],
+    "coverageProvider": "v8"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"

@@ -84,7 +84,7 @@ export class SimpleJWT<T extends object = any> {
         secretOrPrivateKey,
         options,
         (err: Error, resp: string) => {
-          /* istanbul ignore next */
+          /* c8 ignore next 2 */
           if (err) {
             reject(err)
           } else {
