@@ -1,3 +1,5 @@
+import { isAbortError } from './utils'
+
 const r = Promise.resolve()
 
 /**
@@ -41,7 +43,7 @@ export type ResultTuple<T extends [unknown, ...unknown[]]> = {
  * @public
  */
 export class AggregatorError extends Error {
-  constructor(err: Error, readonly index: number) {
+  constructor(readonly err: Error, readonly index: number) {
     super(err.message)
     this.name = this.constructor.name
   }
@@ -98,14 +100,12 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
   return res as any as Promise<ResultTuple<T>>
 }
 
-// https://github.com/nodejs/node/issues/36084#issuecomment-729894622
-const isAbortError = (err?: Error) => err?.name === 'AbortError'
-
 export const aggregatorWithAbort = async <T extends [unknown, ...unknown[]]>(
   iterable: HandlerTuple<T>,
-  onError?: AggregatorOnError
+  onError?: AggregatorOnError,
+  abortController?: AbortController
 ): Promise<ResultTuple<T>> => {
-  const ac = new AbortController()
+  const ac = abortController ?? new AbortController()
 
   const res = await Promise.all(
     iterable.map(async (it, i) => {

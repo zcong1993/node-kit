@@ -39,3 +39,6 @@ export const objOnceGuard = <T extends object>(
   ;(obj as any)[key] = true
   fn()
 }
+
+// https://github.com/nodejs/node/issues/36084#issuecomment-729894622
+export const isAbortError = (err?: Error) => err?.name === 'AbortError'

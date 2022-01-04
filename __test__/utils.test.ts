@@ -1,4 +1,11 @@
-import { ms2s, msUntilNextDay, sleepPromise, objOnceGuard } from '../src/utils'
+import { setTimeout as setTimeoutP } from 'timers/promises'
+import {
+  ms2s,
+  msUntilNextDay,
+  sleepPromise,
+  objOnceGuard,
+  isAbortError,
+} from '../src/utils'
 import { repeatCallSync } from './testUtils'
 
 describe('ms2s', () => {
@@ -43,5 +50,23 @@ describe('objOnceGuard', () => {
 
     expect(fn).toBeCalledTimes(1)
     expect(obj[key]).toBeTruthy()
+  })
+})
+
+describe('isAbortError', () => {
+  it('should works', async () => {
+    const ac = new AbortController()
+    setTimeout(() => ac.abort(), 100)
+    let e: Error
+
+    try {
+      await setTimeoutP(1000, null, { signal: ac.signal })
+    } catch (err) {
+      e = err
+    }
+
+    expect(isAbortError(e)).toBeTruthy()
+
+    expect(isAbortError(new Error())).toBeFalsy()
   })
 })

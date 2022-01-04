@@ -1,4 +1,5 @@
 import { setTimeout } from 'timers/promises'
+import { isAbortError } from '../src'
 import {
   aggregator,
   AggregatorError,
@@ -265,5 +266,44 @@ describe('aggregatorWithAbort', () => {
     expect(aborted).toBeTruthy()
     expect(onError).toBeCalledTimes(1)
     expect(onError.mock.calls[0][0]).toBeInstanceOf(AggregatorError)
+  })
+
+  it.concurrent('test abort 3', async () => {
+    const onError = jest.fn()
+    const ab = new AbortController()
+
+    global.setTimeout(() => ab.abort(), 100)
+
+    let e: Error
+
+    try {
+      await aggregatorWithAbort(
+        [
+          {
+            fn: async (signal) => {
+              await sleepAbort(2000, signal)
+              return 1
+            },
+          },
+          {
+            fn: async (signal) => {
+              await sleepAbort(1000, signal)
+              return 2
+            },
+          },
+        ],
+        onError,
+        ab
+      )
+    } catch (err) {
+      e = err
+    }
+
+    expect(isAbortError(e)).toBeTruthy()
+    expect(onError).toBeCalledTimes(2)
+    expect(onError.mock.calls[0][0]).toBeInstanceOf(AggregatorError)
+    expect(isAbortError(onError.mock.calls[0][0].err)).toBeTruthy()
+    expect(onError.mock.calls[1][0]).toBeInstanceOf(AggregatorError)
+    expect(isAbortError(onError.mock.calls[1][0].err)).toBeTruthy()
   })
 })
