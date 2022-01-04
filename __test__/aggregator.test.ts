@@ -23,7 +23,7 @@ describe('aggregator', () => {
   it.concurrent('fallback', async () => {
     const [res1, res2] = await aggregator([
       {
-        fn: async () => {
+        fn: () => {
           throw new Error('x2')
         },
         fallbackFn: withDefaultValue(1),

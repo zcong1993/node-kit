@@ -87,7 +87,6 @@
     "cockatiel": "^2.0.2",
     "iterare": "^1.2.1",
     "lodash": "^4.17.21",
-    "promise.allsettled": "^1.0.5",
     "rxjs": "^7.4.0"
   },
   "peerDependencies": {

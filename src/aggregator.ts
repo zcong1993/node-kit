@@ -1,11 +1,11 @@
-import allsettled from 'promise.allsettled'
+const r = Promise.resolve()
 
 /**
  * Handler function for {@link Handler} fn and fallbackFn
  *
  * @public
  */
-export type HandlerFunc<T> = () => Promise<T> | T
+export type HandlerFunc<T> = () => Awaited<T> | T
 
 /**
  * Args type for {@link aggregator}
@@ -78,31 +78,22 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
   onError?: AggregatorOnError
 ): Promise<ResultTuple<T>> => {
   // https://github.com/es-shims/Promise.allSettled/issues/5#issuecomment-747464536
-  const resArr = await allsettled.call(
-    Promise,
+  const res = await Promise.all(
     iterable.map(async (it, i) => {
       if (!it.fallbackFn) {
         return it.fn()
       }
 
-      try {
-        return await it.fn()
-      } catch (err) {
-        if (onError) {
-          onError(new AggregatorError(err, i))
-        }
-        return it.fallbackFn()
-      }
+      return r
+        .then(() => it.fn())
+        .catch((err) => {
+          if (onError) {
+            onError(new AggregatorError(err, i))
+          }
+          return it.fallbackFn()
+        })
     })
   )
-  const res = []
-  for (let i = 0; i < resArr.length; i++) {
-    const r = resArr[i]
-    if (r.status === 'fulfilled') {
-      res.push(r.value)
-    } else {
-      throw new Error(r.reason as any)
-    }
-  }
+
   return res as any as Promise<ResultTuple<T>>
 }
