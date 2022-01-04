@@ -1,3 +1,9 @@
+# [0.16.0](https://github.com/zcong1993/node-kit/compare/v0.15.1...v0.16.0) (2022-01-04)
+
+### Features
+
+- **aggregator:** add aggregatorWithAbort, support AbortController ([fd4b7e9](https://github.com/zcong1993/node-kit/commit/fd4b7e9243aebe5b7816ff72eb8cbd4845661a59))
+
 ## [0.15.1](https://github.com/zcong1993/node-kit/compare/v0.15.0...v0.15.1) (2021-12-10)
 
 # [0.15.0](https://github.com/zcong1993/node-kit/compare/v0.14.0...v0.15.0) (2021-12-10)
