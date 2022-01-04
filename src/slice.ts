@@ -42,12 +42,12 @@ export const sliceRun = async <T = any, U = any>(
   const total = dataSource.length
   let i = 0
 
-  if (option?.signal && option?.signal.aborted) {
+  if (option?.signal?.aborted) {
     return res
   }
 
   while (i < total) {
-    if (option?.signal && option?.signal.aborted) {
+    if (option?.signal?.aborted) {
       return res
     }
 

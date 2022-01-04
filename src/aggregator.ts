@@ -5,7 +5,7 @@ const r = Promise.resolve()
  *
  * @public
  */
-export type HandlerFunc<T> = () => Awaited<T> | T
+export type HandlerFunc<T> = (signal?: AbortSignal) => Awaited<T> | T
 
 /**
  * Args type for {@link aggregator}
@@ -80,20 +80,53 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
   // https://github.com/es-shims/Promise.allSettled/issues/5#issuecomment-747464536
   const res = await Promise.all(
     iterable.map(async (it, i) => {
-      if (!it.fallbackFn) {
-        return it.fn()
-      }
-
       return r
         .then(() => it.fn())
         .catch((err) => {
           if (onError) {
             onError(new AggregatorError(err, i))
           }
+
+          if (!it.fallbackFn) {
+            throw err
+          }
           return it.fallbackFn()
         })
     })
   )
+
+  return res as any as Promise<ResultTuple<T>>
+}
+
+// https://github.com/nodejs/node/issues/36084#issuecomment-729894622
+const isAbortError = (err?: Error) => err?.name === 'AbortError'
+
+export const aggregatorWithAbort = async <T extends [unknown, ...unknown[]]>(
+  iterable: HandlerTuple<T>,
+  onError?: AggregatorOnError
+): Promise<ResultTuple<T>> => {
+  const ac = new AbortController()
+
+  const res = await Promise.all(
+    iterable.map(async (it, i) => {
+      return r
+        .then(() => it.fn(ac.signal))
+        .catch((err) => {
+          if (onError) {
+            onError(new AggregatorError(err, i))
+          }
+
+          if (!it.fallbackFn || isAbortError(err)) {
+            throw err
+          }
+
+          return it.fallbackFn(ac.signal)
+        })
+    })
+  ).catch((err) => {
+    ac.abort()
+    throw err
+  })
 
   return res as any as Promise<ResultTuple<T>>
 }
