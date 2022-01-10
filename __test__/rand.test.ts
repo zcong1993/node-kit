@@ -58,9 +58,9 @@ describe('unstableDeviation', () => {
 describe('unstableDeviationInt', () => {
   it('should work', () => {
     intRange(1000).forEach(() => {
-      const res = unstableDeviationInt(999999, 0.05)
+      const res = unstableDeviationInt(100000, 0.05)
       expect(
-        res > 999999 * (1 - 0.05) && res <= 999999 * (1 + 0.05)
+        res >= 100000 * (1 - 0.05) && res <= 100000 * (1 + 0.05)
       ).toBeTruthy()
       expect(Math.floor(res)).toBe(res)
     })

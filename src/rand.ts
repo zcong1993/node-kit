@@ -38,7 +38,7 @@ export const unstableDeviation = (base: number, deviation: number) => {
 }
 
 /**
- * same like unstableDeviation but return int
+ * same like unstableDeviation but return int, [base*(1-deviation), base*(1+deviation)]
  * @param base - base number
  * @param deviation - deviation should in [0, 1]
  * @returns
