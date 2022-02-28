@@ -28,7 +28,7 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: latest
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           # registry-url: "https://registry.npmjs.org"
           node-version: 16
