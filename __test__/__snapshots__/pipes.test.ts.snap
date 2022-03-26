@@ -1,4 +1,22 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1
+
+exports[`validationPipe > when validation fails > should provide complete path for nested errors 1`] = `
+"An instance of TestModelForNestedArrayValidation has failed the validation:
+ - property prop has failed the following constraints: isString 
+,An instance of TestModelForNestedArrayValidation has failed the validation:
+ - property test[0].prop1 has failed the following constraints: isString 
+ - property test[0].prop2 has failed the following constraints: isBoolean 
+"
+`;
+
+exports[`validationPipe > when validation fails > should return string errors 1`] = `
+"An instance of TestModelWithNested has failed the validation:
+ - property prop has failed the following constraints: isString 
+,An instance of TestModelWithNested has failed the validation:
+ - property test.prop1 has failed the following constraints: isString 
+ - property test.prop2 has failed the following constraints: isBoolean 
+"
+`;
 
 exports[`validationPipe when validation fails should provide complete path for nested errors 1`] = `
 "An instance of TestModelForNestedArrayValidation has failed the validation:

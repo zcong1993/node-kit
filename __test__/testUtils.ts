@@ -29,9 +29,15 @@ export const repeatCallSync = <T>(num: number, fn: () => T) => {
     .map(() => fn())
 }
 
+let dbIndex = 0
+
 export const setupRedis = (
-  redisUrl: string = process.env.Redis
+  redisUrl: string = process.env.Redis ?? 'redis://localhost:6379/0',
+  db: number = 0 ?? dbIndex++
 ): [TypeRedis, () => void] => {
+  if (redisUrl && /\d+$/.test(redisUrl)) {
+    redisUrl = redisUrl.replace(/\d+$/, `${db}`)
+  }
   const redis = new Redis(redisUrl)
   return [redis, () => redis.disconnect()]
 }

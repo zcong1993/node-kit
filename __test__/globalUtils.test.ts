@@ -35,7 +35,7 @@ describe('globalUtils', () => {
     unregisterGlobal(test1)
     unregisterGlobal(test2)
 
-    const fn = jest.fn().mockImplementation(() => testInstance1)
+    const fn = vi.fn().mockImplementation(() => testInstance1)
 
     expect(getOrCreateSync(test1, fn)).toBe(testInstance1)
     expect(getOrCreateSync(test1, fn)).toBe(testInstance1)
@@ -47,7 +47,7 @@ describe('globalUtils', () => {
     unregisterGlobal(test1)
     registerGlobal(test1, testInstance1)
 
-    const fn = jest.fn().mockImplementation(() => testInstance1)
+    const fn = vi.fn().mockImplementation(() => testInstance1)
 
     expect(getOrCreateSync(test1, fn)).toBe(testInstance1)
     expect(fn).toBeCalledTimes(0)
@@ -56,7 +56,7 @@ describe('globalUtils', () => {
   it('getOrCreate', async () => {
     unregisterGlobal(test1)
 
-    const fn = jest.fn().mockImplementation(delayFn(100, testInstance1))
+    const fn = vi.fn().mockImplementation(delayFn(100, testInstance1))
 
     await repeatCall(10, async () => {
       expect(await getOrCreate(test1, fn)).toBe(testInstance1)
@@ -69,7 +69,7 @@ describe('globalUtils', () => {
     unregisterGlobal(test1)
     registerGlobal(test1, testInstance1)
 
-    const fn = jest.fn().mockImplementation(delayFn(100, testInstance1))
+    const fn = vi.fn().mockImplementation(delayFn(100, testInstance1))
 
     await repeatCall(10, async () => {
       expect(await getOrCreate(test1, fn)).toBe(testInstance1)

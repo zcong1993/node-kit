@@ -55,7 +55,7 @@ describe('retry', () => {
       return delayFn(100, 1)()
     }
 
-    const f = jest.fn()
+    const f = vi.fn()
 
     await runWithRetry(fn, Policy.handleAll().retry().delay([10, 20, 30]), f)
 

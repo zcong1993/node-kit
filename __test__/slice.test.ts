@@ -51,7 +51,7 @@ describe('slice', () => {
   })
 
   it('onError', async () => {
-    const onError = jest.fn()
+    const onError = vi.fn()
     const source = intRange(100)
     await sliceRun(
       source,
