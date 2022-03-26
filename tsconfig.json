@@ -16,5 +16,5 @@
     "outDir": "./dist",
     "types": ["vitest/globals"]
   },
-  "exclude": ["node_modules", "__test__", "dist"]
+  "exclude": ["node_modules", "__test__", "dist", "vite.config.ts"]
 }
