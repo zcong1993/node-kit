@@ -77,7 +77,7 @@ describe('aggregator', () => {
   })
 
   it.concurrent('onError', async () => {
-    const onError = jest.fn()
+    const onError = vi.fn()
     const [res1, res2] = await aggregator(
       [
         {
@@ -175,7 +175,7 @@ describe('aggregatorWithAbort', () => {
   })
 
   it.concurrent('onError', async () => {
-    const onError = jest.fn()
+    const onError = vi.fn()
     const [res1, res2] = await aggregatorWithAbort(
       [
         {
@@ -201,7 +201,7 @@ describe('aggregatorWithAbort', () => {
   })
 
   it.concurrent('test abort', async () => {
-    const onError = jest.fn()
+    const onError = vi.fn()
     let aborted = false
 
     await expect(
@@ -229,7 +229,7 @@ describe('aggregatorWithAbort', () => {
   })
 
   it.concurrent('test abort 2', async () => {
-    const onError = jest.fn()
+    const onError = vi.fn()
     let aborted = false
     let start: number
 
@@ -269,7 +269,7 @@ describe('aggregatorWithAbort', () => {
   })
 
   it.concurrent('test abort 3', async () => {
-    const onError = jest.fn()
+    const onError = vi.fn()
     const ab = new AbortController()
 
     global.setTimeout(() => ab.abort(), 100)

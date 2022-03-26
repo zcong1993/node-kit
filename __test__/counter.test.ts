@@ -55,7 +55,7 @@ describe('Counter', () => {
     expect(await tc.getOne(testKey1)).toBe(15)
     await tc.delete(testKey1)
 
-    const fn = jest.fn().mockImplementation().mockResolvedValue(20)
+    const fn = vi.fn().mockImplementation().mockResolvedValue(20)
     await tc.incrOrSetLazyload(testKey1, 2, fn)
     expect(await tc.getOne(testKey1)).toBe(22)
     expect(fn).toBeCalledTimes(1)

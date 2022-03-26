@@ -17,7 +17,7 @@ describe('loadPackage', () => {
 
 describe('loadPackageOnce', () => {
   it('should only load once', () => {
-    const loadFn = jest
+    const loadFn = vi
       .fn()
       .mockImplementation(() => require('@zcong/singleflight'))
     expect(

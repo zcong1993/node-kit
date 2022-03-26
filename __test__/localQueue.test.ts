@@ -1,8 +1,6 @@
 import { LocalQueue, LocalQueueError } from '../src/localQueue'
 import { delayFn, intRange } from './testUtils'
 
-/* eslint-disable jest/no-done-callback, jest/expect-expect */
-
 describe('LocalQueue', () => {
   it('should works', (done) => {
     const res: any[] = []
@@ -56,7 +54,7 @@ describe('LocalQueue', () => {
   })
 
   it('onError', (done) => {
-    const onError = jest.fn()
+    const onError = vi.fn()
     const q = new LocalQueue<number>('test1', 10, onError)
     q.startProcess(async (data) => {
       if (data < 5) {

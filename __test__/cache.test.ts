@@ -40,7 +40,7 @@ describe('cache', () => {
     }
 
     const test = new Test()
-    const spy = jest.spyOn(test, 'mockFn')
+    const spy = vi.spyOn(test, 'mockFn')
 
     await repeatCall(10, async () => {
       expect(await test.cacheTest()).toStrictEqual(mockRes)
@@ -66,7 +66,7 @@ describe('cache', () => {
     }
 
     const test = new Test()
-    const spy = jest.spyOn(test, 'mockFn')
+    const spy = vi.spyOn(test, 'mockFn')
 
     await repeatCall(10, async () => {
       expect(await test.cacheTest('zc', 18)).toStrictEqual({

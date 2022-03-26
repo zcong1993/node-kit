@@ -43,7 +43,7 @@ describe('sleepPromise', () => {
 describe('objOnceGuard', () => {
   it('should works', () => {
     const obj: any = {}
-    const fn = jest.fn()
+    const fn = vi.fn()
     const key = Symbol.for('test')
 
     repeatCallSync(10, () => objOnceGuard(obj, key, fn))

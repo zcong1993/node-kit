@@ -6,7 +6,7 @@ let close: Function
 
 describe('redisLock', () => {
   beforeAll(async () => {
-    ;[redis, close] = setupRedis()
+    ;[redis, close] = setupRedis(undefined, 1)
     await redis.flushdb()
   })
 
@@ -26,7 +26,7 @@ describe('redisLock', () => {
 
   it('runWithMutex', async () => {
     const testKey = 'testKey'
-    const fn = jest.fn()
+    const fn = vi.fn()
     let noLockCounter = 0
     await repeatCall(10, () =>
       runWithMutex(redis, testKey, fn, 10000).catch(() => noLockCounter++)
@@ -38,7 +38,7 @@ describe('redisLock', () => {
 
   it('runWithMutex throw', async () => {
     const testKey = 'testKey'
-    const fn = jest.fn().mockImplementation(async () => {
+    const fn = vi.fn().mockImplementation(async () => {
       throw new Error()
     })
 
@@ -68,7 +68,7 @@ describe('redisLock', () => {
 
   it('runWithLockLimit', async () => {
     const testKey = 'testKey1'
-    const fn = jest.fn()
+    const fn = vi.fn()
     let noLockCounter = 0
     await repeatCall(10, () =>
       runWithLockLimit(redis, testKey, fn, 1000).catch(() => noLockCounter++)

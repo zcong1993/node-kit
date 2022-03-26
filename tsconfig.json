@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "types": ["vitest/globals"]
   },
   "exclude": ["node_modules", "__test__", "dist"]
 }
