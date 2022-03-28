@@ -39,7 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@zcong/js-release": "^0.2.5",
-    "@zcong/node-redis-cache": "^0.7.4",
+    "@zcong/node-redis-cache": "^0.9.0",
     "buffer-crc32": "^0.2.13",
     "c8": "^7.11.0",
     "chalk": "^5.0.0",

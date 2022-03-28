@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.4.0
   '@typescript-eslint/parser': ^5.4.0
   '@zcong/js-release': ^0.2.5
-  '@zcong/node-redis-cache': ^0.7.4
+  '@zcong/node-redis-cache': ^0.9.0
   '@zcong/singleflight': ^0.3.0
   buffer-crc32: ^0.2.13
   c8: ^7.11.0
@@ -71,7 +71,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.15.0_f2c49ce7d0e93ebcfdb4b7d25b131b28
   '@typescript-eslint/parser': 5.15.0_eslint@8.11.0+typescript@4.6.2
   '@zcong/js-release': 0.2.5
-  '@zcong/node-redis-cache': 0.7.4
+  '@zcong/node-redis-cache': 0.9.0_ioredis@4.28.5
   buffer-crc32: 0.2.13
   c8: 7.11.0
   chalk: 5.0.1
@@ -546,12 +546,15 @@ packages:
       tempfile: 3.0.0
     dev: true
 
-  /@zcong/node-redis-cache/0.7.4:
-    resolution: {integrity: sha512-CADfdsGbAWfn8OFJK0YX1NHnIiZLI6E35+AtNxiIqC7iwvFS09Q3I3Db1tUNsPgkRzqzUqW8w3H94KM8BNs7yQ==}
+  /@zcong/node-redis-cache/0.9.0_ioredis@4.28.5:
+    resolution: {integrity: sha512-vW3gPXNuIwsW4wl9ijbSTFA5DQfhBO2DJ2bsVTi86SlWbcATv3Sn//9rEsNPdGZYJkhNVLfM8kTC66sBz2a6tw==}
+    peerDependencies:
+      ioredis: ^5.0.0
     dependencies:
       '@zcong/singleflight': 0.3.0
       debug: 4.3.4
       hashring: 3.2.0
+      ioredis: 4.28.5
     transitivePeerDependencies:
       - supports-color
     dev: true
