@@ -1,4 +1,4 @@
-import type { Redis } from 'ioredis'
+import type Redis from 'ioredis'
 import { randString } from './string'
 
 const delCommandKey = Symbol.for('node-kit delCommandKey')
@@ -45,7 +45,7 @@ export const tryLock = async (
   addDelCommand(redis)
 
   const val = `${Date.now()}-${randString(10)}`
-  const lock = await redis.set(key, val, 'nx', 'px', px)
+  const lock = await redis.set(key, val, 'PX', px, 'NX')
 
   // noop
   let unlockFn = async () => {}

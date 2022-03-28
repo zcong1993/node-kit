@@ -1,4 +1,4 @@
-import type { Redis } from 'ioredis'
+import type Redis from 'ioredis'
 import { Counter } from '../src/counter'
 import { setupRedis } from './testUtils'
 

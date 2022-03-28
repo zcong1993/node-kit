@@ -1,4 +1,4 @@
-import type { Redis } from 'ioredis'
+import type Redis from 'ioredis'
 import { buildKey } from '../string'
 import { objOnceGuard } from '../utils'
 

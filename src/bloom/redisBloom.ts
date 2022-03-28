@@ -1,4 +1,4 @@
-import type { Redis } from 'ioredis'
+import type Redis from 'ioredis'
 import { loadPackage } from '../loadPackage'
 import { objOnceGuard } from '../utils'
 
