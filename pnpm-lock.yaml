@@ -47,7 +47,7 @@ specifiers:
   supertest: ^6.2.2
   ts-node: ^10.7.0
   typescript: ^4.6.3
-  vitest: ^0.9.0
+  vitest: ^0.10.0
 
 dependencies:
   '@zcong/singleflight': 0.3.0
@@ -98,7 +98,7 @@ devDependencies:
   supertest: 6.2.3
   ts-node: 10.7.0_l47be6km5p57gglrggidw5gsgm
   typescript: 4.6.4
-  vitest: 0.9.4_c8@7.11.2
+  vitest: 0.10.0_c8@7.11.2
 
 packages:
 
@@ -3924,8 +3924,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.9.4_c8@7.11.2:
-    resolution: {integrity: sha512-Em+EJb3keCr3GjyqnkxHuY7zMerEgLsN+m2nqsUcCzO7C4+Y0E7O7LXSNaODh3Gc/An3dqnoaAe/uLBrAJXUdQ==}
+  /vitest/0.10.0_c8@7.11.2:
+    resolution: {integrity: sha512-8UXemUg9CA4QYppDTsDV76nH0e1p6C8lV9q+o9i0qMSK9AQ7vA2sjoxtkDP0M+pwNmc3ZGYetBXgSJx0M1D/gg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
