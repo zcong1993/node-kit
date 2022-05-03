@@ -10,7 +10,7 @@
 		// Use -bullseye variants on local on arm64/Apple Silicon.
 		"args": {
 			"VARIANT": "16-bullseye",
-      "NODE_MODULES": ""
+      "CUSTOM_NODE_MODULES": "pnpm"
 		}
 	},
 
