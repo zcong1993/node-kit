@@ -56,13 +56,13 @@ export const sliceRun = async <T = any, U = any>(
 
     let pd = dataSource.slice(startIndex, endIndex)
 
-    option.onStart?.(startIndex, endIndex)
+    option?.onStart?.(startIndex, endIndex)
 
     try {
       const r = await fn(pd, option?.signal)
       res.push(r)
     } catch (err) {
-      option.onError?.(new SliceError(err, startIndex, endIndex))
+      option?.onError?.(new SliceError(err, startIndex, endIndex))
     }
     i += pd.length
     pd = []
