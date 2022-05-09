@@ -6,7 +6,7 @@ export type BatchHandler<T> = (tasks: T[]) => Promise<any>
 export interface BatchConfig {
   /**
    * max tasks num for one batch,
-   * batch processer will call batchHandler immediately
+   * batch processor will call batchHandler immediately
    * when forceDelay is false and queued tasks more than maxBatchSize
    */
   maxBatchSize: number
@@ -62,7 +62,7 @@ export class BatchProcessor<T = any> {
   }
 
   /**
-   * marke processor as shutdown mode and call forceFlush
+   * mark processor as shutdown mode and call forceFlush
    */
   async shutdown() {
     if (this.isShutdown) {
