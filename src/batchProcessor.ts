@@ -83,7 +83,7 @@ export class BatchProcessor<T = any> {
     try {
       await this.batchHandler(this.tasks.splice(0, this.config.maxBatchSize))
     } catch (err) {
-      this.config?.onError(err)
+      this.config.onError?.(err)
     }
   }
 
