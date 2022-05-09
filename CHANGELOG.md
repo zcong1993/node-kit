@@ -1,3 +1,5 @@
+## [0.16.1](https://github.com/zcong1993/node-kit/compare/v0.16.0...v0.16.1) (2022-05-09)
+
 # [0.16.0](https://github.com/zcong1993/node-kit/compare/v0.15.1...v0.16.0) (2022-01-04)
 
 ### Features
