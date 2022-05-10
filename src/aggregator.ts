@@ -85,9 +85,7 @@ export const aggregator = async <T extends [unknown, ...unknown[]]>(
       return r
         .then(() => it.fn())
         .catch((err) => {
-          if (onError) {
-            onError(new AggregatorError(err, i))
-          }
+          onError?.(new AggregatorError(err, i))
 
           if (!it.fallbackFn) {
             throw err
@@ -112,9 +110,7 @@ export const aggregatorWithAbort = async <T extends [unknown, ...unknown[]]>(
       return r
         .then(() => it.fn(ac.signal))
         .catch((err) => {
-          if (onError) {
-            onError(new AggregatorError(err, i))
-          }
+          onError?.(new AggregatorError(err, i))
 
           if (!it.fallbackFn || isAbortError(err)) {
             throw err
