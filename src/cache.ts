@@ -1,10 +1,10 @@
-import type { Cacher, Hasher } from '@zcong/node-redis-cache'
+import type { Cacher, KeyStringer } from '@zcong/node-redis-cache'
 
 export interface CacheOption {
   keyPrefix: string
   expire: number | (() => number)
   codec?: string
-  keyHasher?: Hasher
+  keyHasher?: KeyStringer
 }
 
 /**
@@ -23,7 +23,7 @@ export const cache = (
   opt: CacheOption
 ): MethodDecorator => {
   return (_1: any, _2: string, descriptor: PropertyDescriptor) => {
-    const orginMethod = descriptor.value
+    const originMethod = descriptor.value
     descriptor.value = async function (...args: any[]) {
       const expire =
         typeof opt.expire === 'function' ? opt.expire() : opt.expire
@@ -33,7 +33,7 @@ export const cache = (
 
       return cacher.cacheWrapper(
         opt.keyPrefix,
-        orginMethod,
+        originMethod,
         expire,
         opt.codec,
         opt.keyHasher,
