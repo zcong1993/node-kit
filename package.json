@@ -67,7 +67,7 @@
     "supertest": "^6.2.3",
     "ts-node": "^10.8.0",
     "typescript": "^4.7.2",
-    "vitest": "^0.12.9"
+    "vitest": "^0.13.0"
   },
   "jest": {
     "preset": "ts-jest",
