@@ -1,6 +1,6 @@
 {
   "name": "@zcong/node-kit",
-  "version": "0.16.2",
+  "version": "0.16.3",
   "description": "Programming toolkit for NodeJS.",
   "main": "./dist/index.js",
   "files": [
