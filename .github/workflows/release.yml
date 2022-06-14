@@ -1,10 +1,9 @@
 name: Release
+
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: version or increment to release
-        required: true
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   release:
@@ -19,11 +18,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Config git
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
         with:
           version: latest
       - name: Setup Node.js
@@ -34,9 +29,12 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - run: npx changelogithub
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NEXT: ${{ github.event.inputs.version }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-        run: pnpm release
+        run: pnpm publish --access public --no-git-checks

@@ -20,7 +20,7 @@
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "api-types": "api-extractor run",
-    "release": "js-release"
+    "release": "bumpp --commit --push --tag"
   },
   "types": "./dist/index.d.ts",
   "author": "zcong1993",
@@ -40,6 +40,7 @@
     "@zcong/js-release": "^0.2.5",
     "@zcong/node-redis-cache": "^0.9.0",
     "buffer-crc32": "^0.2.13",
+    "bumpp": "^7.1.1",
     "c8": "^7.11.3",
     "chalk": "^5.0.1",
     "class-transformer": "^0.5.1",
