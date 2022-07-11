@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@microsoft/api-extractor': ^7.24.1
-  '@nestjs/common': ^8.4.7
+  '@nestjs/common': ^9.0.0
   '@types/hashring': ^3.2.1
   '@types/imurmurhash': ^0.1.1
   '@types/jsonwebtoken': ^8.5.8
@@ -60,7 +60,7 @@ dependencies:
 
 devDependencies:
   '@microsoft/api-extractor': 7.27.0
-  '@nestjs/common': 8.4.7_kgmvgmqc4iohdboj3f7yqhrie4
+  '@nestjs/common': 9.0.1_kgmvgmqc4iohdboj3f7yqhrie4
   '@types/hashring': 3.2.1
   '@types/imurmurhash': 0.1.1
   '@types/jsonwebtoken': 8.5.8
@@ -256,8 +256,8 @@ packages:
     resolution: {integrity: sha512-6Wci+Tp3CgPt/B9B0a3J4s3yMgLNSku6w5TV6mN+61C71UqsRBv2FUibBf3tPGlNxebgPHMEUzKpb1ggE8KCKw==}
     dev: true
 
-  /@nestjs/common/8.4.7_kgmvgmqc4iohdboj3f7yqhrie4:
-    resolution: {integrity: sha512-m/YsbcBal+gA5CFrDpqXqsSfylo+DIQrkFY3qhVIltsYRfu8ct8J9pqsTO6OPf3mvqdOpFGrV5sBjoyAzOBvsw==}
+  /@nestjs/common/9.0.1_kgmvgmqc4iohdboj3f7yqhrie4:
+    resolution: {integrity: sha512-w0PSRP+M4vy4XThdkaF6ya1mEbWiMDCAd1beEoeGGnFXnsiRpNj7mb58Lp8SrnfwrExiiCnrKR4ei96StpeW/Q==}
     peerDependencies:
       cache-manager: '*'
       class-transformer: '*'
@@ -272,7 +272,6 @@ packages:
       class-validator:
         optional: true
     dependencies:
-      axios: 0.27.2
       class-transformer: 0.5.1
       class-validator: 0.13.2
       iterare: 1.2.1
@@ -280,8 +279,6 @@ packages:
       rxjs: 7.5.5
       tslib: 2.4.0
       uuid: 8.3.2
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -750,15 +747,6 @@ packages:
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: true
-
-  /axios/0.27.2:
-    resolution: {integrity: sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==}
-    dependencies:
-      follow-redirects: 1.15.1
-      form-data: 4.0.0
-    transitivePeerDependencies:
-      - debug
     dev: true
 
   /balanced-match/1.0.2:
@@ -1976,16 +1964,6 @@ packages:
 
   /flatted/3.2.5:
     resolution: {integrity: sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==}
-    dev: true
-
-  /follow-redirects/1.15.1:
-    resolution: {integrity: sha512-yLAMQs+k0b2m7cVxpS1VKJVvoz7SS9Td1zss3XRwXj+ZDH00RJgnuLx7E44wx02kQLrdM3aOOy+FpzS7+8OizA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
     dev: true
 
   /foreground-child/2.0.0:
