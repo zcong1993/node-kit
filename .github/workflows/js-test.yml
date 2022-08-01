@@ -37,6 +37,6 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: run test
         run: pnpm test:cov
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v2
       - name: test build
         run: pnpm build
