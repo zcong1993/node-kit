@@ -21,7 +21,7 @@ specifiers:
   chalk: ^5.0.1
   class-transformer: ^0.5.1
   class-validator: ^0.13.2
-  cockatiel: ^2.0.2
+  cockatiel: ^3.0.0
   conventional-changelog-cli: ^2.2.2
   date-fns: ^2.29.1
   eslint: ^8.21.0
@@ -53,7 +53,7 @@ specifiers:
 
 dependencies:
   '@zcong/singleflight': 0.3.1
-  cockatiel: 2.0.2
+  cockatiel: 3.0.0
   iterare: 1.2.1
   lodash: 4.17.21
   rxjs: 7.5.6
@@ -989,9 +989,9 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /cockatiel/2.0.2:
-    resolution: {integrity: sha512-ehw7t3twohGiMTxARX0AcFiUxndXLhnIBWbnRnHtfde2jRywlPpPB/o3s9YSptXPj6tkOG0fzET4CUUx4GIpEg==}
-    engines: {node: '>=10 <11 || >=12'}
+  /cockatiel/3.0.0:
+    resolution: {integrity: sha512-1uDbVAqFAtDyfhQXz6fJKCG8kjk5q0o0R0Wz/jtxUEvXVuTpaCEfNnqcXim7C5BI6i43VFdnIIPZNzFpzO5C1Q==}
+    engines: {node: '>=16'}
     dev: false
 
   /color-convert/1.9.3:
