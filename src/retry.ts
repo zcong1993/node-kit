@@ -1,23 +1,27 @@
 import {
   IExponentialBackoffOptions,
   IRetryContext,
-  Policy,
   RetryPolicy,
+  handleAll,
+  retry,
+  ExponentialBackoff,
 } from 'cockatiel'
 
-const defaultPolicy = Policy.handleAll()
-  .retry()
-  .attempts(3)
-  .exponential({ initialDelay: 1000 })
+const defaultPolicy = retry(handleAll, {
+  maxAttempts: 3,
+  backoff: new ExponentialBackoff({
+    initialDelay: 1000,
+  }),
+})
 
 export const createSimpleRetryPolicy = (
-  attemptsCount: number,
+  maxAttempts: number,
   exponentialOptions?: Partial<IExponentialBackoffOptions<unknown>>
 ) =>
-  Policy.handleAll()
-    .retry()
-    .attempts(attemptsCount)
-    .exponential(exponentialOptions)
+  retry(handleAll, {
+    maxAttempts,
+    backoff: new ExponentialBackoff(exponentialOptions),
+  })
 
 const noopHandler = () => {}
 
