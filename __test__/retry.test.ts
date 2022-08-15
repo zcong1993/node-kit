@@ -1,4 +1,4 @@
-import { Policy, RetryPolicy } from 'cockatiel'
+import { handleAll, IterableBackoff, retry, RetryPolicy } from 'cockatiel'
 import { RetryError, runWithRetry, createSimpleRetryPolicy } from '../src/retry'
 import { delayFn } from './testUtils'
 
@@ -33,15 +33,22 @@ describe('retry', () => {
       return delayFn(100, 1)()
     }
 
-    const testPolicy = Policy.handleAll()
-      .retry()
-      .attempts(3)
-      .delay([10, 20, 30])
+    const testPolicy = retry(handleAll, {
+      maxAttempts: 3,
+      backoff: new IterableBackoff([10, 20, 30]),
+    })
+
     expect(await runWithRetry(fn, testPolicy)).toBe(1)
 
     i = 0
     await expect(
-      runWithRetry(fn, Policy.handleAll().retry().attempts(1).delay([10]))
+      runWithRetry(
+        fn,
+        retry(handleAll, {
+          maxAttempts: 1,
+          backoff: new IterableBackoff([10]),
+        })
+      )
     ).rejects.toThrow()
   })
 
@@ -57,7 +64,14 @@ describe('retry', () => {
 
     const f = vi.fn()
 
-    await runWithRetry(fn, Policy.handleAll().retry().delay([10, 20, 30]), f)
+    await runWithRetry(
+      fn,
+      retry(handleAll, {
+        maxAttempts: 3,
+        backoff: new IterableBackoff([10, 20, 30]),
+      }),
+      f
+    )
 
     expect(f).toBeCalledTimes(2)
     expect(f.mock.calls[0][0]).toBeInstanceOf(RetryError)
