@@ -12,7 +12,7 @@ specifiers:
   '@types/supertest': ^2.0.12
   '@typescript-eslint/eslint-plugin': ^5.33.0
   '@typescript-eslint/parser': ^5.33.0
-  '@vitest/coverage-c8': ^0.22.1
+  '@vitest/coverage-c8': ^0.23.0
   '@zcong/js-release': ^0.2.5
   '@zcong/node-redis-cache': ^0.9.1
   '@zcong/singleflight': ^0.3.1
@@ -71,7 +71,7 @@ devDependencies:
   '@types/supertest': 2.0.12
   '@typescript-eslint/eslint-plugin': 5.33.1_vsoshirnpb7xw6mr7xomgfas2i
   '@typescript-eslint/parser': 5.33.1_4rv7y5c6xz3vfxwhbrcxxi73bq
-  '@vitest/coverage-c8': 0.22.1
+  '@vitest/coverage-c8': 0.23.2
   '@zcong/js-release': 0.2.5
   '@zcong/node-redis-cache': 0.9.1_ioredis@5.2.2
   buffer-crc32: 0.2.13
@@ -581,11 +581,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.22.1:
-    resolution: {integrity: sha512-KOOYpO7EGpaF+nD8GD+Y05D0JtZp12NUu6DdLXvBPqSOPo2HkZ7KNBtfR0rb6gOy3NLtGiWTYTzCwhajgb2HlA==}
+  /@vitest/coverage-c8/0.23.2:
+    resolution: {integrity: sha512-VWT6zGj9iXEZCimnRLAUhf3siYVGIG9VryyMoo7B8zMOd+bnAbH8/7PhqvmjedVwa9wh61nkxqgG7/3Y/mzofQ==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.22.1
+      vitest: 0.23.2
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
