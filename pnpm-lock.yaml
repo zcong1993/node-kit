@@ -2,55 +2,55 @@ lockfileVersion: 5.4
 
 specifiers:
   '@microsoft/api-extractor': ^7.24.1
-  '@nestjs/common': ^9.0.9
+  '@nestjs/common': ^9.1.5
   '@types/hashring': ^3.2.1
   '@types/imurmurhash': ^0.1.1
-  '@types/jsonwebtoken': ^8.5.8
-  '@types/lodash': ^4.14.182
-  '@types/node': ^18.7.3
+  '@types/jsonwebtoken': ^8.5.9
+  '@types/lodash': ^4.14.186
+  '@types/node': ^18.11.4
   '@types/promise.allsettled': ^1.0.3
   '@types/supertest': ^2.0.12
-  '@typescript-eslint/eslint-plugin': ^5.33.0
-  '@typescript-eslint/parser': ^5.33.0
-  '@vitest/coverage-c8': ^0.24.0
+  '@typescript-eslint/eslint-plugin': ^5.40.1
+  '@typescript-eslint/parser': ^5.40.1
+  '@vitest/coverage-c8': ^0.24.3
   '@zcong/js-release': ^0.2.5
   '@zcong/node-redis-cache': ^0.9.1
   '@zcong/singleflight': ^0.3.1
   buffer-crc32: ^0.2.13
   bumpp: ^8.2.1
   c8: ^7.12.0
-  chalk: ^5.0.1
+  chalk: ^5.1.2
   class-transformer: ^0.5.1
   class-validator: ^0.13.2
   cockatiel: ^3.0.0
   conventional-changelog-cli: ^2.2.2
-  date-fns: ^2.29.1
-  eslint: ^8.22.0
+  date-fns: ^2.29.3
+  eslint: ^8.26.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-import: ^2.26.0
   execa: ^6.1.0
   hashring: ^3.2.0
   husky: ^8.0.1
   imurmurhash: ^0.1.4
-  ioredis: ^5.2.2
+  ioredis: ^5.2.3
   iterare: ^1.2.1
   jsonwebtoken: ^8.5.1
   lint-staged: ^13.0.3
   lodash: ^4.17.21
-  minimist: ^1.2.6
+  minimist: ^1.2.7
   npm-run-all: ^4.1.5
   prettier: ^2.7.1
-  prettier-plugin-organize-imports: ^3.0.3
-  prom-client: ^14.0.1
+  prettier-plugin-organize-imports: ^3.1.1
+  prom-client: ^14.1.0
   prompts: ^2.4.2
   reflect-metadata: ^0.1.13
-  rxjs: ^7.5.6
-  semver: ^7.3.7
-  supertest: ^6.2.4
+  rxjs: ^7.5.7
+  semver: ^7.3.8
+  supertest: ^6.3.0
   ts-node: ^10.9.1
-  tsup: ^6.2.2
-  typescript: ^4.7.4
-  vitest: ^0.24.0
+  tsup: ^6.3.0
+  typescript: ^4.8.4
+  vitest: ^0.24.3
 
 dependencies:
   '@zcong/singleflight': 0.3.1
