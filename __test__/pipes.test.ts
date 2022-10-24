@@ -275,12 +275,13 @@ describe('validationPipe', () => {
           prop2: 'value2',
           propInternal: 'value3',
         }
-        expect(
-          validationPipe(TestModelInternal, testObj, {
-            transform: true,
-            transformOptions: { groups: ['external'] },
-          })
-        ).not.toHaveProperty('propInternal')
+
+        const res = validationPipe(TestModelInternal, testObj, {
+          transform: true,
+          transformOptions: { groups: ['external'] },
+        })
+
+        expect(res.propInternal).toBeUndefined()
       })
     })
   })
