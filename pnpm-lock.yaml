@@ -21,7 +21,7 @@ specifiers:
   c8: ^7.12.0
   chalk: ^5.1.2
   class-transformer: ^0.5.1
-  class-validator: ^0.13.2
+  class-validator: ^0.14.0
   cockatiel: ^3.0.0
   conventional-changelog-cli: ^2.2.2
   date-fns: ^2.29.3
@@ -61,7 +61,7 @@ dependencies:
 
 devDependencies:
   '@microsoft/api-extractor': 7.33.6
-  '@nestjs/common': 9.2.1_jk7uain746y4tk7ycdzdeavas4
+  '@nestjs/common': 9.2.1_537f4dyna5eqdupcxnvaoq3vwa
   '@types/hashring': 3.2.1
   '@types/imurmurhash': 0.1.1
   '@types/jsonwebtoken': 8.5.9
@@ -79,7 +79,7 @@ devDependencies:
   c8: 7.12.0
   chalk: 5.1.2
   class-transformer: 0.5.1
-  class-validator: 0.13.2
+  class-validator: 0.14.0
   conventional-changelog-cli: 2.2.2
   date-fns: 2.29.3
   eslint: 8.29.0
@@ -281,7 +281,7 @@ packages:
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
     dev: true
 
-  /@nestjs/common/9.2.1_jk7uain746y4tk7ycdzdeavas4:
+  /@nestjs/common/9.2.1_537f4dyna5eqdupcxnvaoq3vwa:
     resolution: {integrity: sha512-nZuo3oDsSSlC5mti/M2aCWTEIfHPGDXmBwWgPeCpRbrNz3IWd109rkajll+yxgidVjznAdBS9y00JkAVJblNYw==}
     peerDependencies:
       cache-manager: <=5
@@ -298,7 +298,7 @@ packages:
         optional: true
     dependencies:
       class-transformer: 0.5.1
-      class-validator: 0.13.2
+      class-validator: 0.14.0
       iterare: 1.2.1
       reflect-metadata: 0.1.13
       rxjs: 7.6.0
@@ -457,6 +457,10 @@ packages:
     resolution: {integrity: sha512-X3HPWTwXRerBZS7Mo1k6vMVR1Z6zmJcDVn5O/31whe0tnjE4te6ZJSJGq1RiqHPjzPdMTfjCFogDJmwng9xHaQ==}
     dependencies:
       '@types/superagent': 4.1.16
+    dev: true
+
+  /@types/validator/13.7.10:
+    resolution: {integrity: sha512-t1yxFAR2n0+VO6hd/FJ9F2uezAZVWHLmpmlJzm1eX03+H7+HsuTAp7L8QJs+2pQCfWkP1+EXsGK9Z9v7o/qPVQ==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.45.0_yjegg5cyoezm3fzsmuszzhetym:
@@ -969,9 +973,10 @@ packages:
     resolution: {integrity: sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==}
     dev: true
 
-  /class-validator/0.13.2:
-    resolution: {integrity: sha512-yBUcQy07FPlGzUjoLuUfIOXzgynnQPPruyK1Ge2B74k9ROwnle1E+NxLWnUv5OLU8hA/qL5leAE9XnXq3byaBw==}
+  /class-validator/0.14.0:
+    resolution: {integrity: sha512-ct3ltplN8I9fOwUd8GrP8UQixwff129BkEtuWDKL5W45cQuLd19xqmTLu5ge78YDm/fdje6FMt0hGOhl0lii3A==}
     dependencies:
+      '@types/validator': 13.7.10
       libphonenumber-js: 1.10.14
       validator: 13.7.0
     dev: true
