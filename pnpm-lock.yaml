@@ -26,8 +26,8 @@ devDependencies:
     specifier: ^7.24.1
     version: 7.49.1(@types/node@22.10.5)
   '@nestjs/common':
-    specifier: ^10.0.0
-    version: 10.4.15(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
+    specifier: ^11.0.0
+    version: 11.0.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1)
   '@types/hashring':
     specifier: ^3.2.1
     version: 3.2.5
@@ -814,8 +814,8 @@ packages:
     resolution: {integrity: sha512-4aErSrCR/On/e5G2hDP0wjooqDdauzEbIq8hIkIe5pXV0rtWJZvdCEKL0ykZxex+IxIwBp0eGeV48hQN07dXtw==}
     dev: true
 
-  /@nestjs/common@10.4.15(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1):
-    resolution: {integrity: sha512-vaLg1ZgwhG29BuLDxPA9OAcIlgqzp9/N8iG0wGapyUNTf4IY4O6zAHgN6QalwLhFxq7nOI021vdRojR1oF3bqg==}
+  /@nestjs/common@11.0.1(class-transformer@0.5.1)(class-validator@0.14.1)(reflect-metadata@0.2.2)(rxjs@7.8.1):
+    resolution: {integrity: sha512-GbPKvDz/sYjhR86ebZu+0F5jAvYDZDXY5WcHek9gkEkMI9eIo3xeH/F/tNIPhdyeWp3eG+kNWqR9VPtC18G+TA==}
     peerDependencies:
       class-transformer: '*'
       class-validator: '*'
